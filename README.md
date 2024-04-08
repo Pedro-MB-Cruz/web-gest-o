@@ -4,5 +4,5 @@ Login - painel -pop up - pagina de Rede - Editar/acrescentar - pop up com  tabel
 guest - Painel Rede - pop up so permissões de leitura
 ---//---
 Base de dados/json/Login & Singn Up -> Pedro 
-pop up/table/Data/Home  -> Nuno
+pop up/table/Data/index  -> Nuno
 Relatorio-> Nuno & Pedro
