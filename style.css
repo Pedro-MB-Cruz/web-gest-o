@@ -20,6 +20,11 @@
     font-weight: var(--font-semi-bold);
 }
 
+.nav__list{
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+}
 .nav__close{
     display: flex;
     font-size: 1.5rem;
