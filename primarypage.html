@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Primary Page</title>
+    <link rel="stylesheet" href="primarypage.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 </head>
 <body>
@@ -11,55 +12,80 @@
         <div class="row">
             <div class="col-md-3">
                 <div class="card" style="width: 100%;">
-                    <img  src="" alt="Card Image" style="width: 100%;">
+                    <img  src="img/planta_ebi_piso0.jpg" alt="Card Image" style="width: 100%;">
                     <div class="card-body">
-                      <h4 class="card-title">Piso 0</h4>
-                      <p>Bar</p>
-                      <p>Sala Convivio</p>
-                      <p>Sala Professores</p>
-                      <p>Gabinete do aluno</p>
-                      <a href="#" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal" onclick="carregaTabela('Gestão das redes do Piso 0')">Ver +</a>
+                      <h4 class="card-title">Entrada</h4>
+                      <p>Refeitório</p>
+                      <p>Repografia</p>
+                      <p>Secretaria</p>
+                      <a href="#" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal" onclick="carregaTabela('Gestão das redes da Entrada')">Ver +</a>
                     </div>
             </div>
         </div>
             <div class="col-md-3">
                 <div class="card" style="width: 100%;">
-                    <img  src="" alt="Card Image" style="width: 100%;">
+                    <img  src="img/blocoA.jpg" alt="Card Image" style="width: 100%;">
                     <div class="card-body">
-                      <h4 class="card-title">Piso 1</h4>
-                      <p>Labratório 1</p>
-                      <p>Sala 1.1</p>
-                      <p>Sala 1.2</p>
-                      <p>Sala 1.3</p>
-                      <a href="#" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal" onclick="carregaTabela('Gestão das redes do Piso 1')">Ver +</a>
+                      <h4 class="card-title">Bloco A</h4>
+                      <p>Sala 9</p>
+                      <p>Sala 10</p>
+                      <p>Sala 11</p>
+                      <p>Sala 12</p>
+                      <p>Sala 13</p>
+                      <p>Sala 14</p>
+                      <p>Sala 15</p>
+                      <p>WC F</p>
+                      <P>WC M</P>
+                      <a href="#" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal" onclick="carregaTabela('Gestão das redes do Bloco A')">Ver +</a>
                     </div>
             </div>
             </div>
             <div class="col-md-3">
                 <div class="card" style="width: 100%;"> 
-                    <img  src="" alt="Card Image" style="width: 100%;">
+                    <img  src="img/blocoB.jpg" alt="Card Image" style="width: 100%;">
                     <div class="card-body">
-                      <h4 class="card-title">Piso 2</h4>
-                      <p>Labratório 2</p>
-                      <p>Sala 2.4</p>
-                      <p>Sala 2.5</p>
-                      <p>Sala 2.6</p>
-                      <a href="#" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal" onclick="carregaTabela('Gestão das redes do Piso 2')">Ver +</a>
+                      <h4 class="card-title">Bloco B</h4>
+                      <p>Sala 16</p>
+                      <p>Sala 17</p>
+                      <p>Sala 18</p>
+                      <p>Sala 19</p>
+                      <p>Sala 20</p>
+                      <p>Sala DT</p>
+                      <p>WC F</p>
+                      <p>WC M</p>
+                      <a href="#" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal" onclick="carregaTabela('Gestão das redes do Bloco B')">Ver +</a>
                     </div>
             </div>
             </div>
             <div class="col-md-3">
                 <div class="card" style="width: 100%;">
-                    <img src="" alt="Card Image" style="width: 100%;">
+                    <img src="img/BLOCOc.jpg" alt="Card Image" style="width: 100%;">
                     <div class="card-body">
-                      <h4 class="card-title">Piso 3</h4>
-                      <p>Labratório 3</p>
-                      <p>Sala 3.7</p>
-                      <p>Sala 3.8</p>
-                      <p>Sala 3.9</p>
-                      <a href="#" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal" onclick="carregaTabela('Gestão das redes do Piso 3')">Ver +</a>
+                      <h4 class="card-title">Bloco C</h4>
+                      <p>Sala TIC</p>
+                      <p>Bar</p>
+                      <a href="#" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal" onclick="carregaTabela('Gestão das redes do Bloco C 3')">Ver +</a>
                     </div>
             </div>
+        </div>
+          <div class="col-md-12">
+          <table class="table">
+            <tr>
+              <th>Id</th>
+              <th>Name</th>
+              <th>Ip</th>
+              <th>Subnet Mask</th>
+              <th>Default Gateway</th>
+              <th>MAC</th>
+            </tr>
+            <tr>
+              <td>0</td>
+              <td>Dispositivo 1</td>
+              <td>192.168.50.100</td>
+              <td>255.255.255.0</td>
+              <td>192.168.50.1</td>
+            </tr>
+          </table>
         </div>
     </div>
     </div>
