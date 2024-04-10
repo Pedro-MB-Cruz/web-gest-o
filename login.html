@@ -3,31 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
+    <title>Index</title>
 </head>
 <body>
-    <header>
-        <button type="submit" class="btns" onclick="location.href='index.html'">Back</button>
-    </header>
-    <div class="wrapper">
-        <form action="">
-            <h1>Login</h1>
-            <div class="input-box">
-                <input type="text" class="input" placeholder="User">
+    <div class="container">
+        <div class="box form-box">
+            <header>Login</header>
+            <form action="" method="post">
+                <div class="field input">
+                    <label for="username">Username</label>
+                    <input type="text" name="username" id="username" required>
+                </div>
+                <div class="field input">
+                    <label for="password">Password</label>
+                    <input type="password" name="password" id="password" required>
+                </div>
+                <div class="field">
+                    <input type="submit" name="submit" value="login">
+                </div>
+                <div class="link">
+                    Don't have an accont? <a href="signup.html">Sign up</a>
+                </div>
             </div>
-            <div class="input-box">
-                <input type="password" class="input" placeholder="Password">
-            </div>
-            <div class="remmeber-forgot">
-                <label><input type="checkbox"> Remember me</label>
-                <a href="forgotpassword.html">Forgot Password?</a>
-            </div>
-            <button type="submit" class="btn">Login</button>
-            <div class="register-link">
-                <a href="signup.html">Don't have an account? Sign Up</a>
-            </div>
-        </form>
-    
+        </div>
+    </div>
 </body>
 </html>
