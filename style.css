@@ -1,0 +1,32 @@
+.header{
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left:0;
+    background-color: var(--body-color);
+    z-index: var(--z-fixed);
+    transition: box-shadow .4s;
+}
+.nav{
+    position: relative;
+    height: var(--header-height);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav__logo{
+    color: var(--title-color);
+    font-weight: var(--font-semi-bold);
+}
+
+.nav__list{
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+}
+.nav__close{
+    display: flex;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
