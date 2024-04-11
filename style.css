@@ -1,32 +1,32 @@
-.header{
-    position: fixed;
+#ls{
+    margin:auto;
+    display: block;
+    text-align: center;
+    background-color: white;
+    font-size: 16px;
+    padding: 12px 36px;
+    border: 2px solid black;
     width: 100%;
-    top: 0;
-    left:0;
-    background-color: var(--body-color);
-    z-index: var(--z-fixed);
-    transition: box-shadow .4s;
-}
-.nav{
-    position: relative;
-    height: var(--header-height);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    transition-duration: 0.4s;
+    color: black;
 }
 
-.nav__logo{
-    color: var(--title-color);
-    font-weight: var(--font-semi-bold);
+#ls:hover{
+    background-color: blue;
+    color: white;
 }
 
-.nav__list{
-    display: flex;
-    gap: 2rem;
-    list-style: none;
+#texto{
+    text-align: center;
 }
-.nav__close{
-    display: flex;
-    font-size: 1.5rem;
-    cursor: pointer;
+
+#label{
+    width: 100%;
+}
+
+#bodybg{
+    background-image: url(img/logo.jpg);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: 100%;
 }
