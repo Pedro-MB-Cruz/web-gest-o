@@ -20,13 +20,35 @@
     text-align: center;
 }
 
+#textofp{
+    text-align: center;
+    font-size: 12px;
+}
+
 #label{
     width: 100%;
 }
 
 #bodybg{
-    background-image: url(img/logo.jpg);
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-size: 100%;
+    background-color: white;
+}
+
+#boxs{
+    width: 100%;
+    height: 360px;
+    padding: 10px;
+    border: 2px solid black;
+    margin: auto;
+    background-color: whitesmoke;
+    display: block;
+}
+
+#boxl{
+    width: 100%;
+    height: 240px;
+    padding: 10px;
+    border: 2px solid black;
+    margin: auto;
+    background-color: whitesmoke;
+    display: block;
 }
