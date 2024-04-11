@@ -21,16 +21,16 @@
             </div>
             <div class="col-md-12">
                 <h5 id="boxl">
+                    <div class="input-box">
+                        <input id="label" type="text" placeholder="Email">
+                        <br>
+                        <br>
+                        <input id="pass" type="password" placeholder="Password">
+                        <img src="img/olho.jpg" id="eye">
+                        <br>
+                        <br>
+                    </div>
                     <form>
-                        <label for="fmail">
-                            Email:
-                        </label>
-                        <input id="label" type="text" name="fmail" id="fmail">
-                        <br>
-                        <label for="fpass">Password:</label>
-                        <input id="label" type="text" id="fpass" name="fpass">
-                        <br>
-                        <br>
                         <input id="ls" type="submit" value="Login">
                     </form>
                     <br>
@@ -39,6 +39,22 @@
             </div>
         </div>
     </div>
+    <script>
+        let eye = document.getElementById("eye");
+        let password = document.getElementById("password");
+
+        eye.onclick = function () {
+            if (pass.type == "password") {
+                pass.type = "text";
+
+            } else {
+                pass.type = "password"
+
+            }
+        }
+    </script>
+
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
