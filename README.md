@@ -1,8 +1,8 @@
-# web-gest-o
-app Gestão de redes
-Login - painel -pop up - pagina de Rede - Editar/acrescentar - pop up com  tabela - dispositivo-de-rede/quantidade/ip
-guest - Painel Rede - pop up so permissões de leitura
----//---
-Base de dados/json/Login & Singn Up -> Pedro 
-pop up/table/Data/index  -> Nuno
-Relatorio-> Nuno & Pedro
+# web-gestao
+app Gestão de redes <br>
+Login - painel -pop up - pagina de Rede - Editar/acrescentar - pop up com  tabela - dispositivo-de-rede/quantidade/ip <br>
+guest - Painel Rede - pop up so permissões de leitura <br>
+<br>---//--- <br>
+Base de dados/json/Login & Singn Up -> Pedro<br> 
+pop up/table/Data/index  -> Nuno <br>
+Relatorio-> Nuno & Pedro<br>
