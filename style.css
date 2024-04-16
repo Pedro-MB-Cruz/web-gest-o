@@ -66,3 +66,17 @@
 #repass {
     width: 90%;
 }
+
+#perfiluser{
+    width: 100px;
+    height: 100px;
+}
+
+#perfilout{
+    width: 90px;
+    height: 90px;
+}
+
+#perfilogo{
+    width: 100%;
+}
