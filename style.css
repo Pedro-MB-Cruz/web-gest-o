@@ -80,3 +80,25 @@
 #perfilogo{
     width: 100%;
 }
+
+#user {
+    width: 90%;
+}
+
+#nt{
+    margin:auto;
+    display: block;
+    text-align: center;
+    background-color: white;
+    font-size: 16px;
+    padding: 12px 36px;
+    border: 2px solid black;
+    width: 100%;
+    transition-duration: 0.4s;
+    color: black;
+}
+
+#nt:hover{
+    background-color: grey;
+    color: white;
+}

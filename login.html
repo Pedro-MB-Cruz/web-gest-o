@@ -11,18 +11,24 @@
 </head>
 
 <body id="bodybg">
-    <header>
-        <button type="submit" class="btns" onclick="location.href='index.html'">Back</button>
-    </header>
     <div class="container">
         <div class="row">
-            <div class="col-md-12">
-                <h1 id="texto">Login</h1>
+            <div class="col-md-10">
+                <h1 id="texto">
+                    <br>
+                    Nexa Link
+                </h1>
+            </div>
+            <div class="col-md-2">
+                <br>
+                <a href="index.html"><img id="perfilout" src="img/logout.jpg">
+                </a>
             </div>
             <div class="col-md-12">
+                <br>
                 <h5 id="boxl">
                     <div class="input-box">
-                        <input id="label" type="text" placeholder="Email">
+                        <input id="user" type="text" placeholder="UserName">
                         <br>
                         <br>
                         <input id="pass" type="password" placeholder="Password">
@@ -31,7 +37,7 @@
                         <br>
                     </div>
                     <form>
-                        <input id="ls" type="submit" value="Login">
+                        <input id="ls" type="submit" value="Login" class="submit-btn" onclick="auth()">
                     </form>
                     <br>
                     <p id="textofp"><a href="#">Forgot Password</a></p>
@@ -40,8 +46,23 @@
         </div>
     </div>
     <script>
+        function auth() {
+            var user = document.getElementById("user").value;
+            var pass = document.getElementById("pass").value;
+            if (user == "admin" && pass == "admin") {
+                window.location.assign("firstpage.html");
+                alert("Login successfuly");
+            }
+            else {
+                alert("Invalid information")
+                return;
+            }
+        }
+
+    </script>
+    <script>
         let eye = document.getElementById("eye");
-        let password = document.getElementById("password");
+        let pass = document.getElementById("pass");
 
         eye.onclick = function () {
             if (pass.type == "password") {
