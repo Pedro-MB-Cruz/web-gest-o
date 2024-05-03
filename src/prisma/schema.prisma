@@ -1,0 +1,79 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id       Int      @id @default(autoincrement())
+  username String   @unique
+  password String
+  admin    Boolean  @default(false)
+  Gestor   Gestor[]
+
+  @@map("users")
+}
+
+model Gestor {
+  id        Int     @id @default(autoincrement())
+  user_id   Int
+  admin     Boolean @default(false)
+  networkId Int     @unique
+
+  user    User    @relation(fields: [user_id], references: [id])
+  Network Network @relation(fields: [networkId], references: [id])
+
+  @@map("gestores")
+}
+
+model Network {
+  id         Int    @id @default(autoincrement())
+  name       String
+  ipEntrance String
+  gateway    String
+
+  Gestor      Gestor?
+  SubNetworks SubNetwork[]
+
+  @@map("networks")
+}
+
+model SubNetwork {
+  id      Int    @id @default(autoincrement())
+  name    String
+  subnet  String
+  mask    String
+  gateway String
+  dns     String
+
+  network_id Int
+
+  Network Network  @relation(fields: [network_id], references: [id])
+  Device  Device[]
+
+  @@map("subnetworks")
+}
+
+model Device {
+  id            Int    @id @default(autoincrement())
+  name          String
+  ports         Int?
+  location      String
+  ip            String
+  mac           String
+  description   String
+  subnetwork_id Int
+
+  SubNetwork SubNetwork @relation(fields: [subnetwork_id], references: [id])
+
+  @@map("devices")
+}

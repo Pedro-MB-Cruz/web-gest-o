@@ -1,0 +1,42 @@
+{
+  "name": "web-gest-o",
+  "version": "1.0.0",
+  "description": "Gestão de Redes",
+  "main": "src/server.js",
+  "prisma": {
+    "schema": "src/prisma/schema.prisma"
+  },
+  "scripts": {
+    "dev": "tsx watch src/server.ts",
+    "db:push": "npx prisma db push",
+    "db:pull": "npx prisma db pull",
+    "db:seed": "npx prisma db seed",
+    "db:studio": "npx prisma studio",
+    "start:prod": "node dist/server.js",
+    "build": "tsup src",
+    "build:run": "npm run build && npm run start:prod"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@prisma/client": "^5.13.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "node": "^22.1.0",
+    "nodemon": "^3.1.0",
+    "ts-node": "^10.9.2",
+    "zod": "^3.23.6"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.17",
+    "@types/express": "^4.17.21",
+    "@types/node": "^20.12.8",
+    "prisma": "^5.13.0",
+    "tsconfig-paths": "^4.2.0",
+    "tsup": "^8.0.2",
+    "tsx": "^4.9.0",
+    "typescript": "^5.4.5"
+  }
+}
