@@ -1,6 +1,6 @@
 import { Router } from "express";
 import apiRoute from "./api.route";
-import pagesRoute from "./pages.route";
+import pagesRoute from "./pages/index.route";
 import staticRoute from "./static.route";
 
 const router = Router();
