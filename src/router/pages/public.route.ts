@@ -7,7 +7,26 @@ const router = Router();
 // });
 
 // TODO: TEMPORARY (CHANGE THIS)
-router.get("/", express.static("pages/index.html"));
-router.use("/", express.static("pages"));
+// router.get("/", express.static("pages/index.html"));
+router.get("/", (req, res) => {
+  res.sendFile("pages/index.html", {
+    root: ".",
+  });
+});
+router.get("/signup", (req, res) => {
+  res.sendFile("pages/signup.html", {
+    root: ".",
+  });
+});
+router.get("/signin", (req, res) => {
+  res.sendFile("pages/login.html", {
+    root: ".",
+  });
+});
+router.get("/forgot-password", (req, res) => {
+  res.sendFile("pages/recuperarpass.html", {
+    root: ".",
+  });
+});
 
 export default router;
