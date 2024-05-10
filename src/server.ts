@@ -4,6 +4,7 @@ import morgan from "morgan";
 import router from "./router/index.route";
 import cookieParser from "cookie-parser";
 import session from "express-session";
+import { json } from "body-parser";
 
 declare module "express-session" {
   interface SessionData {
@@ -19,6 +20,7 @@ declare module "express-session" {
 const app = express(); // Create express app
 app.use(morgan("tiny")); // Log HTTP requests
 app.use(cors()); // Enable CORS
+app.use(json()); // Parse JSON (Requests)
 app.use(cookieParser()); // Parse cookies
 const sess = {
   secret: process.env.SESSION_SECRET || "secret", // Secret key for session
