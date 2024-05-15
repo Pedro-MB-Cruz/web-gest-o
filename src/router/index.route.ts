@@ -1,5 +1,5 @@
 import { Router } from "express";
-import apiRoute from "./api.route";
+import apiRoute from "./api/index.route";
 import pagesRoute from "./pages/index.route";
 import staticRoute from "./static.route";
 

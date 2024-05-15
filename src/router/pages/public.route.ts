@@ -1,3 +1,4 @@
+import noAuthenticationMiddleware from "@/middleware/no_authentication.middleware";
 import express, { Request, Response, Router } from "express";
 
 const router = Router();
@@ -13,17 +14,17 @@ router.get("/", (req, res) => {
     root: ".",
   });
 });
-router.get("/signup", (req, res) => {
+router.get("/signup", noAuthenticationMiddleware, (req, res) => {
   res.sendFile("pages/signup.html", {
     root: ".",
   });
 });
-router.get("/signin", (req, res) => {
+router.get("/signin", noAuthenticationMiddleware, (req, res) => {
   res.sendFile("pages/login.html", {
     root: ".",
   });
 });
-router.get("/forgot-password", (req, res) => {
+router.get("/forgot-password", noAuthenticationMiddleware, (req, res) => {
   res.sendFile("pages/recuperarpass.html", {
     root: ".",
   });
