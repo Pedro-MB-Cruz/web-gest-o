@@ -1,19 +1,34 @@
 import db from "@/prisma/prisma";
-import { sha512 } from "js-sha512";
 import { Request, Response } from "express";
+import bcrypt from "bcrypt";
 import z from "zod";
+import JWTManager from "@/utils/JWTManager";
 
 const LoginSchema = z.object({
-  username: z.string({
-    message: "Invalid username",
-  }),
+  username: z
+    .string({
+      message: "Invalid username",
+    })
+    .min(3, {
+      message: "Username must be at least 3 characters long",
+    }),
   password: z
     .string({
       message: "Password must be at least 8 characters long",
     })
     .min(8, {
       message: "Password must be at least 8 characters long",
-    }),
+    })
+    .max(64, {
+      message: "Password must be at most 64 characters long",
+    })
+    .regex(
+      /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,64}$/,
+      {
+        message:
+          "Password must contain at least one lowercase letter, one uppercase letter, one numeric digit, and one special character",
+      }
+    ),
 });
 
 interface RequestLogin extends Request {
@@ -54,18 +69,25 @@ export default async function login(req: RequestLogin, res: Response) {
       throw new Error("Username or password is incorrect");
     }
     // Check password
-    const hashedPassword = sha512(data.password);
-    if (hashedPassword !== dbData.password) {
+    const match = await bcrypt.compare(data.password, dbData.password);
+    if (!match) {
       throw new Error("Username or password is incorrect");
     }
-    // Create session
-    req.session.logged_in = true;
-    req.session.user = {
-      id: dbData.id,
-      username: dbData.username,
-      admin: dbData.admin,
-    };
-    req.session.save();
+
+    const token = new JWTManager().generateToken({
+      data: {
+        id: dbData.id,
+        username: dbData.username,
+        admin: dbData.admin,
+      },
+    });
+
+    res.cookie("token", token, {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === "production",
+      sameSite: "strict",
+      maxAge: JWTManager.getExpiresInDate(),
+    });
 
     return res.status(200).json({
       message: "Login success",
@@ -73,6 +95,7 @@ export default async function login(req: RequestLogin, res: Response) {
         username: dbData.username,
         admin: dbData.admin,
       },
+      accessToken: token,
     });
   } catch (error) {
     console.error("LOGIN: ", error);

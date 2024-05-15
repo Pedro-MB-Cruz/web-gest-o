@@ -1,14 +1,14 @@
 import { Request, Response } from "express";
 
 export default async function logout(req: Request, res: Response) {
-  if (!req.session.logged_in || !req.session.user) {
-    return res.status(401).json({
-      message: "You are not logged in",
+  try {
+    res.clearCookie("token");
+    return res.status(200).json({
+      message: "Logged out",
+    });
+  } catch (err) {
+    return res.status(500).json({
+      message: "Internal Server Error",
     });
   }
-  req.session.destroy(() => {
-    res.status(200).json({
-      message: "Logout success",
-    });
-  });
 }
