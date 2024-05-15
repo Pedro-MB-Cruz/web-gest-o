@@ -112,3 +112,16 @@
     background-color: whitesmoke;
     display: block;
 }
+.row{
+    display: flex;
+    justify-content: center;
+}
+
+.container_box{
+    width: 25%;
+    margin:2px;
+}
+
+.col-md-4{
+    align-items: center;
+}

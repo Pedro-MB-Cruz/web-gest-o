@@ -13,13 +13,18 @@ router.get("/", (req, res) => {
     root: ".",
   });
 });
+router.get("/about", (req, res) => {
+  res.sendFile("pages/about.html", {
+    root: ".",
+  });
+});
 router.get("/signup", (req, res) => {
   res.sendFile("pages/signup.html", {
     root: ".",
   });
 });
 router.get("/signin", (req, res) => {
-  res.sendFile("pages/login.html", {
+  res.sendFile("pages/signin.html", {
     root: ".",
   });
 });
