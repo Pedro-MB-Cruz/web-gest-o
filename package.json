@@ -4,7 +4,7 @@
   "description": "Gestão de Redes",
   "main": "src/server.js",
   "prisma": {
-    "schema": "src/prisma/schema.prisma"
+    "schema": "prisma/schema.prisma"
   },
   "scripts": {
     "dev": "tsx watch src/server.ts",
