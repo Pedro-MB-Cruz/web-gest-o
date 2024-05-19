@@ -16,9 +16,7 @@ function noAuthenticationMiddleware(
         .verifyToken(accessToken)
         .then((result) => {
           if (result) {
-            res.status(401).json({
-              message: "Unauthorized",
-            });
+            res.status(401);
           } else {
             return next();
           }
@@ -39,9 +37,7 @@ function noAuthenticationMiddleware(
         .verifyToken(accessToken)
         .then((result) => {
           if (result) {
-            res.status(401).json({
-              message: "Unauthorized",
-            });
+            res.status(401);
           } else {
             return next();
           }
@@ -51,8 +47,7 @@ function noAuthenticationMiddleware(
         });
     }
   }
-
-  next(); // Continue
+  return next();
 }
 
 export default noAuthenticationMiddleware;

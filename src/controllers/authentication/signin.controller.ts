@@ -82,21 +82,22 @@ export default async function login(req: RequestLogin, res: Response) {
       },
     });
 
-    res.cookie("token", token, {
-      httpOnly: true,
-      secure: process.env.NODE_ENV === "production",
-      sameSite: "strict",
-      maxAge: JWTManager.getExpiresInDate(),
-    });
-
-    return res.status(200).json({
-      message: "Login success",
-      data: {
-        username: dbData.username,
-        admin: dbData.admin,
-      },
-      accessToken: token,
-    });
+    return res
+      .cookie("token", token, {
+        httpOnly: true,
+        secure: process.env.NODE_ENV === "production",
+        sameSite: "strict",
+        maxAge: JWTManager.getExpiresInDate(),
+      })
+      .status(200)
+      .json({
+        message: "Login success",
+        data: {
+          username: dbData.username,
+          admin: dbData.admin,
+        },
+        accessToken: token,
+      });
   } catch (error) {
     console.error("LOGIN: ", error);
     return res.status(400).json({

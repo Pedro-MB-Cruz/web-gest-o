@@ -48,7 +48,7 @@ export default async function register(req: RequestRegister, res: Response) {
     const hashedPassword = await bcrypt.hash(data.password, 10);
     // Create user
     const user = await db.user
-      .create({
+      .createMany({
         data: {
           username: data.username,
           password: hashedPassword,
@@ -72,7 +72,7 @@ export default async function register(req: RequestRegister, res: Response) {
     if (!user) {
       throw new Error("User not created");
     }
-    res.status(200).json({
+    res.status(201).json({
       message: "User created successfully",
     });
   } catch (error: Error | any) {
