@@ -1,114 +1,118 @@
 #ls {
-    margin: auto;
-    display: block;
-    text-align: center;
-    background-color: white;
-    font-size: 16px;
-    padding: 12px 36px;
-    border: 2px solid black;
-    width: 100%;
-    transition-duration: 0.4s;
-    color: black;
+  margin: auto;
+  display: block;
+  text-align: center;
+  background-color: white;
+  font-size: 16px;
+  padding: 12px 36px;
+  border: 2px solid black;
+  width: 100%;
+  transition-duration: 0.4s;
+  color: black;
 }
 
 #ls:hover {
-    background-color: blue;
-    color: white;
+  background-color: blue;
+  color: white;
 }
 
 #texto {
-    text-align: center;
+  text-align: center;
 }
 
 #textofp {
-    text-align: center;
-    font-size: 12px;
+  text-align: center;
+  font-size: 12px;
 }
 
 #label {
-    width: 100%;
+  width: 100%;
 }
 
 #bodybg {
-    background-color: white;
+  background-color: white;
 }
 
 #boxs {
-    width: 100%;
-    height: 300px;
-    padding: 10px;
-    border: 2px solid black;
-    margin: auto;
-    background-color: whitesmoke;
-    display: block;
+  width: 100%;
+  height: 300px;
+  padding: 10px;
+  border: 2px solid black;
+  margin: auto;
+  background-color: whitesmoke;
+  display: block;
 }
 
 #boxl {
-    width: 100%;
-    height: 220px;
-    padding: 10px;
-    border: 2px solid black;
-    margin: auto;
-    background-color: whitesmoke;
-    display: block;
+  width: 100%;
+  height: 220px;
+  padding: 10px;
+  border: 2px solid black;
+  margin: auto;
+  background-color: whitesmoke;
+  display: block;
 }
 
 .input-box img {
-    width: 35px;
-    cursor: pointer;
-
+  width: 35px;
+  cursor: pointer;
 }
-
+/*
 #pass {
-    width: 90%;
+  width: 90%;
 }
 
 #repass {
-    width: 90%;
+  width: 90%;
+}*/
+
+#perfiluser {
+  width: 100px;
+  height: 100px;
 }
 
-#perfiluser{
-    width: 100px;
-    height: 100px;
+#perfilout {
+  width: 90px;
+  height: 90px;
 }
 
-#perfilout{
-    width: 90px;
-    height: 90px;
-}
-
-#perfilogo{
-    width: 100%;
+#perfilogo {
+  width: 100%;
 }
 
 #user {
-    width: 90%;
+  width: 90%;
 }
 
-#nt{
-    margin:auto;
-    display: block;
-    text-align: center;
-    background-color: white;
-    font-size: 16px;
-    padding: 12px 36px;
-    border: 2px solid black;
-    width: 100%;
-    transition-duration: 0.4s;
-    color: black;
+#nt {
+  margin: auto;
+  display: block;
+  text-align: center;
+  background-color: white;
+  font-size: 16px;
+  padding: 12px 36px;
+  border: 2px solid black;
+  width: 100%;
+  transition-duration: 0.4s;
+  color: black;
 }
 
-#nt:hover{
-    background-color: blue;
-    color: white;
+#nt:hover {
+  background-color: blue;
+  color: white;
 }
 
-#boxfp{
-    width: 100%;
-    height: 160px;
-    padding: 10px;
-    border: 2px solid black;
-    margin: auto;
-    background-color: whitesmoke;
-    display: block;
+#boxfp {
+  width: 100%;
+  height: 160px;
+  padding: 10px;
+  border: 2px solid black;
+  margin: auto;
+  background-color: whitesmoke;
+  display: block;
+}
+
+.icon {
+  width: 1em;
+  height: 1em;
 }

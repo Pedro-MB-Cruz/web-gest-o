@@ -31,27 +31,75 @@
                 </a>
             </div>
             <div class="col-md-12">
-                <br>
-                <h5 id="boxl">
-                    <div class="input-box">
-                        <input id="user" type="text" placeholder="UserName">
+                <div id="boxl">
+                    <form action="#" method="post" onsubmit="signin(event);">
+                        <div class="d-flex flex-column form-group">
+                            <label for="username">Nome de Utilizador:</label>
+                            <input type="text" id="username" name="username" placeholder="Username" />
+                        </div>
+                        <div class="d-flex flex-column form-group">
+                            <label for="password">Senha: </label>
+                            <div class="d-flex gap-1">
+                                <input type="password" id="password" name="password" placeholder="Password"
+                                    class="flex-fill" />
+                                <div class="hide-show-password icon" id="password-input-icon">
+                                </div>
+                            </div>
+                        </div>
                         <br>
                         <br>
-                        <input id="pass" type="password" placeholder="Password">
-                        <img src="/static/img/olho.jpg" id="eye">
-                        <br>
-                        <br>
-                    </div>
-                    <form>
-                        <input id="ls" type="submit" value="Login" class="submit-btn" onclick="auth()">
+                        <input id="ls" type="submit" value="Sign in" class="submit-btn" />
                     </form>
-                    <br>
-                    <p id="textofp"><a href="/forgot-password">Forgot Password</a></p>
-                </h5>
+                </div>
             </div>
         </div>
     </div>
+    <script src="/static/scripts/script.js"></script>
     <script>
+        document.getElementById("password-input-icon").addEventListener('click', showPassword);
+        document.getElementById("password-input-icon").innerHTML = showPasswordSVG;
+
+        function signin(e) {
+            e.preventDefault();
+
+            const username = e.target.username.value;
+            const password = e.target.password.value;
+
+            fetch('/api/auth/signin', {
+                method: 'POST',
+                credentials: "include",
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    username,
+                    password
+                })
+            }).then(res => {
+                if (res.status !== 200) {
+                    return res.json().then(data => {
+                        throw data;
+                    });
+                }
+                return res.json();
+            })
+                .then(data => {
+                    localStorage.setItem('token', data.accessToken);
+                    window.location.href = '/p/';
+                })
+                .catch(err => {
+                    console.log(err);
+                    if (err.message.issues) {
+                        alert(err.message.issues[0].message);
+                        return;
+                    } else {
+                        alert("Invalid username or password");
+                        return;
+                    }
+                });
+        }
+
+
         function auth() {
             var user = document.getElementById("user").value;
             var pass = document.getElementById("pass").value;
@@ -69,20 +117,6 @@
             }
         }
 
-    </script>
-    <script>
-        let eye = document.getElementById("eye");
-        let pass = document.getElementById("pass");
-
-        eye.onclick = function () {
-            if (pass.type == "password") {
-                pass.type = "text";
-
-            } else {
-                pass.type = "password"
-
-            }
-        }
     </script>
 
 
