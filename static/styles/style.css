@@ -112,7 +112,62 @@
   display: block;
 }
 
+/* UPDATES - CASTRO */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.root {
+  min-height: 100vh;
+}
+
+body {
+  background-color: #f3f4f6;
+}
+
+a {
+  text-decoration: none !important;
+  color: inherit !important;
+}
+
+#navbar {
+  height: 3.75rem;
+}
+
+#navbar-logo-img {
+  height: 100%;
+  mix-blend-mode: multiply;
+}
+
+#navbar-logo-text {
+  cursor: default;
+}
+
+.navbar-item {
+  color: #111827 !important;
+}
+
+.navbar-item:hover {
+  color: #4b5563 !important;
+}
+
+#dropdown-navbar-profile:hover {
+  opacity: 0.8;
+}
+
+#dropdown-navbar-profile-menu {
+  background-color: white;
+}
+
 .icon {
   width: 1em;
   height: 1em;
+}
+
+.icon-logout {
+  width: 2.5em;
+  height: 2.5em;
 }

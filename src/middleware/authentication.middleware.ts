@@ -9,7 +9,7 @@ async function authenticationMiddleware(
   if (req.cookies.token) {
     const accessToken = req.cookies.token;
     if (!accessToken || accessToken === "") {
-      return res.status(401);
+      return res.status(401).redirect("/signin");
     }
 
     try {
@@ -18,13 +18,13 @@ async function authenticationMiddleware(
 
       return next();
     } catch (err) {
-      return res.status(401);
+      return res.status(401).redirect("/signin");
     }
   } else if (req.headers.authorization) {
     const accessToken = req.headers["authorization"]; // req.headers['x-access-token'];
 
     if (!accessToken) {
-      return res.status(401);
+      return res.status(401).redirect("/signin");
     }
 
     try {
@@ -36,10 +36,10 @@ async function authenticationMiddleware(
 
       return next();
     } catch (err) {
-      return res.status(401);
+      return res.status(401).redirect("/signin");
     }
   } else {
-    return res.status(401);
+    return res.status(401).redirect("/signin");
   }
 }
 

@@ -9,6 +9,11 @@ const router = Router();
 
 // TODO: TEMPORARY (CHANGE THIS)
 // router.get("/", express.static("pages/index.html"));
+router.get("/test", (req, res) => {
+  res.sendFile("pages/f.html", {
+    root: ".",
+  });
+});
 router.get("/", (req, res) => {
   res.sendFile("pages/index.html", {
     root: ".",

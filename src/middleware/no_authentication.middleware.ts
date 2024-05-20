@@ -16,7 +16,7 @@ function noAuthenticationMiddleware(
         .verifyToken(accessToken)
         .then((result) => {
           if (result) {
-            res.status(401);
+            res.status(401).redirect("/p");
           } else {
             return next();
           }
@@ -37,7 +37,7 @@ function noAuthenticationMiddleware(
         .verifyToken(accessToken)
         .then((result) => {
           if (result) {
-            res.status(401);
+            res.status(401).redirect("/p");
           } else {
             return next();
           }
