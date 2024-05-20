@@ -13,26 +13,28 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model User {
-  id       Int      @id @default(autoincrement())
-  username String   @unique
-  password String
-  admin    Boolean  @default(false)
-  Gestor   Gestor[]
-
-  @@map("users")
+enum Roles {
+  ADMIN
+  TECHNICIAN
+  USER
 }
 
-model Gestor {
-  id        Int     @id @default(autoincrement())
-  user_id   Int
-  admin     Boolean @default(false)
-  networkId Int     @unique
+enum AccountStatus {
+  ACTIVE
+  INACTIVE
+}
 
-  user    User    @relation(fields: [user_id], references: [id])
-  Network Network @relation(fields: [networkId], references: [id])
+model User {
+  id         Int           @id @default(autoincrement())
+  username   String        @unique
+  password   String
+  role       Roles         @default(USER)
+  status     AccountStatus @default(ACTIVE)
+  created_at DateTime      @default(now())
+  updated_at DateTime      @default(now()) @updatedAt
+  network    Network[]
 
-  @@map("gestores")
+  @@map("users")
 }
 
 model Network {
@@ -40,9 +42,10 @@ model Network {
   name       String
   ipEntrance String
   gateway    String
+  user_id    Int
 
-  Gestor      Gestor?
   SubNetworks SubNetwork[]
+  User        User         @relation(fields: [user_id], references: [id])
 
   @@map("networks")
 }

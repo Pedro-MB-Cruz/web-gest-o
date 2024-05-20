@@ -56,7 +56,7 @@ export default async function login(req: RequestLogin, res: Response) {
           id: true,
           password: true, // Needed to check password
           username: true,
-          admin: true,
+          role: true,
         },
       })
       .catch((err) => {
@@ -78,7 +78,7 @@ export default async function login(req: RequestLogin, res: Response) {
       data: {
         id: dbData.id,
         username: dbData.username,
-        admin: dbData.admin,
+        role: dbData.role,
       },
     });
 
@@ -94,7 +94,7 @@ export default async function login(req: RequestLogin, res: Response) {
         message: "Login success",
         data: {
           username: dbData.username,
-          admin: dbData.admin,
+          role: dbData.role,
         },
         accessToken: token,
       });

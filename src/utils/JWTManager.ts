@@ -1,9 +1,10 @@
+import { Roles } from "@prisma/client";
 import jwt from "jsonwebtoken";
 
 export interface JWTData {
   id: number;
   username: string;
-  admin: boolean;
+  role: Roles;
 }
 
 export default class JWTManager {
