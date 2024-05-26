@@ -3,8 +3,9 @@ import { Request, Response } from "express";
 import bcrypt from "bcrypt";
 import z from "zod";
 import { PrismaClientKnownRequestError } from "@prisma/client/runtime/library";
+import PasswordManager from "@/utils/PasswordManager";
 
-const RegisterSchema = z.object({
+export const RegisterSchema = z.object({
   username: z
     .string({
       message: "Invalid username",
@@ -45,7 +46,7 @@ export default async function register(req: RequestRegister, res: Response) {
     // Validate Data (Auto invalid data will throw an error)
     const data = RegisterSchema.parse({ username, password });
     // Hash password
-    const hashedPassword = await bcrypt.hash(data.password, 10);
+    const hashedPassword = await PasswordManager.hashPassword(data.password);
     // Create user
     const user = await db.user
       .createMany({

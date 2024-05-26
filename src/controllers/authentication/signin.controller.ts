@@ -3,6 +3,7 @@ import { Request, Response } from "express";
 import bcrypt from "bcrypt";
 import z from "zod";
 import JWTManager from "@/utils/JWTManager";
+import PasswordManager from "@/utils/PasswordManager";
 
 const LoginSchema = z.object({
   username: z
@@ -70,7 +71,10 @@ export default async function login(req: RequestLogin, res: Response) {
       throw new Error("Username or password is incorrect");
     }
     // Check password
-    const match = await bcrypt.compare(data.password, dbData.password);
+    const match = await PasswordManager.comparePassword(
+      data.password,
+      dbData.password
+    );
     if (!match) {
       throw new Error("Username or password is incorrect");
     }
