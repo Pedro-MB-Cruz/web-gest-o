@@ -4,12 +4,17 @@ import { JWTData } from "@/utils/JWTManager";
 import { Response } from "express";
 import db from "@/prisma/prisma";
 
-type IUpdateNetworkRequestBody = z.infer<typeof createNetworkBodySchema> & {
+const updateNetworkSchema = createNetworkBodySchema.partial();
+
+type IUpdateNetworkRequestBody = z.infer<typeof updateNetworkSchema> & {
   userData: JWTData;
 };
 
 interface IUpdateNetworkRequest extends RequestWithAuth {
   body: IUpdateNetworkRequestBody;
+  params: {
+    id?: string;
+  };
 }
 
 export default async function updateNetwork(
@@ -41,7 +46,7 @@ export default async function updateNetwork(
   if (req.body.userData.role === "ADMIN") {
     const { name, ipEntrance, gateway } = req.body;
     try {
-      const data = createNetworkBodySchema.parse({
+      const data = updateNetworkSchema.parse({
         name,
         ipEntrance,
         gateway,
@@ -52,9 +57,9 @@ export default async function updateNetwork(
           id: parseInt(req.params.id),
         },
         data: {
-          name: data.name,
-          ipEntrance: data.ipEntrance,
-          gateway: data.gateway,
+          name: data.name && data.name,
+          ipEntrance: data.ipEntrance && data.ipEntrance,
+          gateway: data.gateway && data.gateway,
         },
       });
 
@@ -75,7 +80,7 @@ export default async function updateNetwork(
   const { name, ipEntrance, gateway } = req.body;
 
   try {
-    const data = createNetworkBodySchema.parse({
+    const data = updateNetworkSchema.parse({
       name,
       ipEntrance,
       gateway,
@@ -86,9 +91,9 @@ export default async function updateNetwork(
         id: parseInt(req.params.id),
       },
       data: {
-        name: data.name,
-        ipEntrance: data.ipEntrance,
-        gateway: data.gateway,
+        name: data.name && data.name,
+        ipEntrance: data.ipEntrance && data.ipEntrance,
+        gateway: data.gateway && data.gateway,
       },
     });
 

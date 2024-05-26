@@ -1,11 +1,13 @@
 import JWTManager from "@/utils/JWTManager";
 import { NextFunction, Request, Response } from "express";
+import { isBrowserCall } from "./helper";
 
 function noAuthenticationMiddleware(
   req: Request,
   res: Response,
   next: NextFunction
 ) {
+  const isBrowser = isBrowserCall(req);
   if (req.cookies.token) {
     const accessToken = req.cookies.token;
     if (!accessToken || accessToken === "") {
@@ -16,7 +18,8 @@ function noAuthenticationMiddleware(
         .verifyToken(accessToken)
         .then((result) => {
           if (result) {
-            res.status(401).redirect("/p");
+            if (isBrowser) return res.status(401).redirect("/p");
+            else return res.status(401).json({ message: "Unauthorized" });
           } else {
             return next();
           }
@@ -37,7 +40,8 @@ function noAuthenticationMiddleware(
         .verifyToken(accessToken)
         .then((result) => {
           if (result) {
-            res.status(401).redirect("/p");
+            if (isBrowser) return res.status(401).redirect("/p");
+            else return res.status(401).json({ message: "Unauthorized" });
           } else {
             return next();
           }
