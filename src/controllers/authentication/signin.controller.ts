@@ -57,6 +57,7 @@ export default async function login(req: RequestLogin, res: Response) {
           password: true, // Needed to check password
           username: true,
           role: true,
+          status: true,
         },
       })
       .catch((err) => {
@@ -71,6 +72,11 @@ export default async function login(req: RequestLogin, res: Response) {
     // Check password
     const match = await bcrypt.compare(data.password, dbData.password);
     if (!match) {
+      throw new Error("Username or password is incorrect");
+    }
+
+    // Check if user is active
+    if (dbData.status !== "ACTIVE") {
       throw new Error("Username or password is incorrect");
     }
 
