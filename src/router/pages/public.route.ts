@@ -34,5 +34,10 @@ router.get("/forgot-password", noAuthenticationMiddleware, (req, res) => {
     root: ".",
   });
 });
+router.get("/about", (req, res) => {
+  res.sendFile("pages/about.html", {
+    root: ".",
+  });
+});
 
 export default router;
