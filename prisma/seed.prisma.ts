@@ -1,5 +1,4 @@
 import { PrismaClient } from "@prisma/client";
-import bcrypt from "bcrypt";
 import createUserSeed from "./funcs/users";
 import createNetworkSeed from "./funcs/network";
 
