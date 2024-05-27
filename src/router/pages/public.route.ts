@@ -1,5 +1,5 @@
 import noAuthenticationMiddleware from "@/middleware/no_authentication.middleware";
-import express, { Request, Response, Router } from "express";
+import { Router } from "express";
 
 const router = Router();
 

@@ -5,8 +5,6 @@ import {
   updateUser,
   deleteUser,
 } from "@/controllers/admin";
-import authenticationMiddleware from "@/middleware/authentication.middleware";
-import adminOnlyMiddleware from "@/middleware/adminOnly.middleware";
 
 const router = Router();
 

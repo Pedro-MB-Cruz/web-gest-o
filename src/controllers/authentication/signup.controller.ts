@@ -1,6 +1,5 @@
 import db from "@/prisma/prisma";
 import { Request, Response } from "express";
-import bcrypt from "bcrypt";
 import z from "zod";
 import { PrismaClientKnownRequestError } from "@prisma/client/runtime/library";
 import PasswordManager from "@/utils/PasswordManager";

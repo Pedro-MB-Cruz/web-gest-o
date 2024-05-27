@@ -7,7 +7,7 @@ interface IDeleteSubNetworkRequest extends RequestWithAuth {
   };
 }
 
-export default async function deleteNetwork(
+export default async function deleteSubNetwork(
   req: IDeleteSubNetworkRequest,
   res: Response
 ) {

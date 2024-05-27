@@ -1,6 +1,5 @@
 import db from "@/prisma/prisma";
 import { Request, Response } from "express";
-import bcrypt from "bcrypt";
 import z from "zod";
 import JWTManager from "@/utils/JWTManager";
 import PasswordManager from "@/utils/PasswordManager";

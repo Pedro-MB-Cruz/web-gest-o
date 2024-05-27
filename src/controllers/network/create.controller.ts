@@ -1,6 +1,6 @@
 import db from "@/prisma/prisma";
 import { JWTData } from "@/utils/JWTManager";
-import { Request, Response } from "express";
+import { Response } from "express";
 import { z } from "zod";
 
 export const createNetworkBodySchema = z.object({

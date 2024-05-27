@@ -1,6 +1,6 @@
 import db from "@/prisma/prisma";
 import { JWTData } from "@/utils/JWTManager";
-import { Request, Response } from "express";
+import { Response } from "express";
 import { z } from "zod";
 
 export const createSubNetworkBodySchema = z.object({
@@ -56,7 +56,7 @@ interface ICreateSubNetworkRequest extends RequestWithAuth {
   };
 }
 
-export default async function createNetwork(
+export default async function createSubNetwork(
   req: ICreateSubNetworkRequest,
   res: Response
 ) {

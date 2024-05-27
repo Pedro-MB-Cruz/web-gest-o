@@ -1,5 +1,4 @@
 import db from "@/prisma/prisma";
-import { JWTData } from "@/utils/JWTManager";
 import { Response } from "express";
 import { z } from "zod";
 

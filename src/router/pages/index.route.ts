@@ -1,4 +1,4 @@
-import { NextFunction, Request, Response, Router } from "express";
+import { Router } from "express";
 import publicRoute from "./public.route";
 import protectedRoute from "./protected.route";
 import authMiddleware from "@/middleware/authentication.middleware";
