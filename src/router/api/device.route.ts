@@ -1,37 +1,37 @@
 import { Router } from "express";
 import authenticationMiddleware from "@/middleware/authentication.middleware";
 import {
-  createSubNetwork,
-  getSubNetworkById,
-  updateSubNetwork,
-  deleteSubNetwork,
-} from "@/controllers/subnetwork";
+  createDevice,
+  getDeviceById,
+  updateDevice,
+  deleteDevice,
+} from "@/controllers/devices";
 import technicianOnlyMiddleware from "@/middleware/technicianOnly.middleware";
 
 const router = Router();
 
-// Get a subnetworks by id
-router.get("/:id", getSubNetworkById);
-// Create a network (only for technicians or above)
+// Get a device by id
+router.get("/:id", getDeviceById);
+// Create a device (only for technicians or above)
 router.post(
   "/:id",
   authenticationMiddleware,
   technicianOnlyMiddleware,
-  createSubNetwork
+  createDevice
 );
 // Update a network (only for the owner or above)
 router.put(
   "/:id",
   authenticationMiddleware,
   technicianOnlyMiddleware,
-  updateSubNetwork
+  updateDevice
 );
 // Delete a network (only for the owner or above)
 router.delete(
   "/:id",
   authenticationMiddleware,
   technicianOnlyMiddleware,
-  deleteSubNetwork
+  deleteDevice
 );
 
 export default router;
