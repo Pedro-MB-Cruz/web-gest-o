@@ -45,7 +45,7 @@ model Network {
   user_id    Int
 
   SubNetworks SubNetwork[]
-  User        User         @relation(fields: [user_id], references: [id])
+  User        User         @relation(fields: [user_id], references: [id], onDelete: Cascade)
 
   @@map("networks")
 }
@@ -60,7 +60,7 @@ model SubNetwork {
 
   network_id Int
 
-  Network Network  @relation(fields: [network_id], references: [id])
+  Network Network  @relation(fields: [network_id], references: [id], onDelete: Cascade)
   Device  Device[]
 
   @@map("subnetworks")
@@ -76,7 +76,7 @@ model Device {
   description   String
   subnetwork_id Int
 
-  SubNetwork SubNetwork @relation(fields: [subnetwork_id], references: [id])
+  SubNetwork SubNetwork @relation(fields: [subnetwork_id], references: [id], onDelete: Cascade)
 
   @@map("devices")
 }
