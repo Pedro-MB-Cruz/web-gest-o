@@ -63,3 +63,41 @@ function signout(e) {
     }
   });
 }
+
+async function checkAuth() {
+  if (!localStorage.getItem("token")) {
+    return {
+      loggedIn: false,
+    };
+  }
+  // Sending a GET request to /api/user
+  try {
+    const response = await fetch("/api/user/", {
+      method: "GET",
+      credentials: "include",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    if (response.status === 200) {
+      // If response status is 200 (OK)
+      // Parse the response
+      const data = await response.json();
+      // If user is present in the response
+      if (data) {
+        // Return the user
+        return {
+          loggedIn: true,
+          data,
+        };
+      }
+    }
+    return {
+      loggedIn: false,
+    };
+  } catch (error) {
+    return {
+      loggedIn: false,
+    };
+  }
+}
