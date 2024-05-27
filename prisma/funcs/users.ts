@@ -1,4 +1,4 @@
-import { prisma } from "prisma/seed.prisma";
+import { prisma } from "../seed.prisma";
 import bcrypt from "bcrypt";
 
 export default async function createUserSeed() {

@@ -5,8 +5,8 @@ import createNetworkSeed from "./funcs/network";
 
 export const prisma = new PrismaClient();
 async function main() {
-  createUserSeed();
-  createNetworkSeed();
+  await createUserSeed();
+  await createNetworkSeed();
 }
 main()
   .then(async () => {
