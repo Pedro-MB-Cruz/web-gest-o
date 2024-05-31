@@ -101,3 +101,127 @@ async function checkAuth() {
     };
   }
 }
+
+/**
+ * Object to check if the user is logged in
+ */
+const loggedIn = {
+  // loading property to check if the check is in progress
+  loading: true,
+  /**
+   * Check the Auth sending a GET Request to the API
+   * @returns {void}
+   */
+  check: async () => {
+    try {
+      const d = await checkAuth();
+      loggedIn.loading = false;
+      loggedIn.loggedIn = d.loggedIn;
+      loggedIn.data = d.data;
+    } catch (e) {
+      loggedIn.loading = false;
+    }
+    return;
+  },
+  // loggedIn property to check if the user is logged in or not
+  loggedIn: false,
+  // data property to store the user data (undefined by default)
+  data: undefined,
+};
+
+/**
+ *
+ * @param {() => void} clb
+ * @returns {void}
+ */
+const loggedInPromise = (clb) => {
+  if (!loggedIn.loading) {
+    // Already loaded
+    clb();
+  }
+  new Promise((resolve, reject) => {
+    loggedIn.check().then(() => {
+      clb();
+      resolve();
+    });
+  });
+};
+
+const loginDropdownButton = `<li>
+<a class="dropdown-item" href="/signin">
+    <div class="d-flex flex-row align-items-center gap-1">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="icon">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 9V5.25A2.25 2.25 0 0 1 10.5 3h6a2.25 2.25 0 0 1 2.25 2.25v13.5A2.25 2.25 0 0 1 16.5 21h-6a2.25 2.25 0 0 1-2.25-2.25V15M12 9l3 3m0 0-3 3m3-3H2.25" />
+        </svg>
+        Signin
+    </div>
+</a>
+</li>`;
+
+const registerDropdownButton = `<li>
+<a class="dropdown-item" href="/signup">
+    <div class="d-flex flex-row align-items-center gap-1">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="icon">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M18 7.5v3m0 0v3m0-3h3m-3 0h-3m-2.25-4.125a3.375 3.375 0 1 1-6.75 0 3.375 3.375 0 0 1 6.75 0ZM3 19.235v-.11a6.375 6.375 0 0 1 12.75 0v.109A12.318 12.318 0 0 1 9.374 21c-2.331 0-4.512-.645-6.374-1.766Z" />
+        </svg>
+        Signup
+    </div>
+</a>
+</li>`;
+const logoutDropdownButton = `<li>
+<a class="dropdown-item" href="#" onclick="signout(event);">
+    <div class="d-flex flex-row align-items-center gap-1">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+            stroke-width="1.5" stroke="currentColor" class="icon">
+            <path stroke-linecap="round" stroke-linejoin="round"
+                d="M15.75 9V5.25A2.25 2.25 0 0 0 13.5 3h-6a2.25 2.25 0 0 0-2.25 2.25v13.5A2.25 2.25 0 0 0 7.5 21h6a2.25 2.25 0 0 0 2.25-2.25V15m3 0 3-3m0 0-3-3m3 3H9" />
+        </svg>
+        Sair
+    </div>
+</a>
+</li>`;
+
+const adminDropdownButton = `
+<li>
+  <a class="dropdown-item" href="/p/admin">
+    <div class="d-flex flex-row align-items-center gap-1">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="icon">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75a4.5 4.5 0 0 1-4.884 4.484c-1.076-.091-2.264.071-2.95.904l-7.152 8.684a2.548 2.548 0 1 1-3.586-3.586l8.684-7.152c.833-.686.995-1.874.904-2.95a4.5 4.5 0 0 1 6.336-4.486l-3.276 3.276a3.004 3.004 0 0 0 2.25 2.25l3.276-3.276c.256.565.398 1.192.398 1.852Z" />
+        <path stroke-linecap="round" stroke-linejoin="round" d="M4.867 19.125h.008v.008h-.008v-.008Z" />
+      </svg>
+      Painel Administrador
+    </div>
+  </a>
+</li> 
+`;
+
+const dropdownDivider = `<li>
+<hr class="dropdown-divider">
+</li>`;
+
+// Check if the user is logged in and render stuff with it (Dropdown Menu)
+loggedInPromise(() => {
+  // Dropdown Menu
+  const dropdownMenu = document.getElementById(
+    "dropdown-navbar-profile-menu-auth"
+  );
+  if (loggedIn.loggedIn) {
+    // Logged In
+    dropdownMenu.innerHTML = `
+    ${logoutDropdownButton}
+    `;
+    if (loggedIn.data.role === "ADMIN") {
+      // Admin
+      dropdownMenu.parentNode.innerHTML += `
+        ${dropdownDivider}
+        ${adminDropdownButton}
+      `;
+    }
+  } else {
+    // Not Logged In
+    dropdownMenu.innerHTML = `
+    ${registerDropdownButton}
+    ${loginDropdownButton}
+    `;
+  }
+});
