@@ -1,4 +1,4 @@
-import { prisma } from "@p/seed.prisma";
+import { prisma } from "../seed.prisma";
 
 export default async function createNetworkSeed() {
   if ((await prisma.network.count()) === 0) {
@@ -28,14 +28,14 @@ export default async function createNetworkSeed() {
         },
         {
           name: "Network 2",
-          gateway: "192.168.1.1",
-          ipEntrance: "192.168.1.0",
+          gateway: "192.168.2.1",
+          ipEntrance: "192.168.2.0",
           user_id: users[2].id,
         },
         {
           name: "Network 3",
-          gateway: "192.168.1.1",
-          ipEntrance: "192.168.1.0",
+          gateway: "192.168.3.1",
+          ipEntrance: "192.168.3.0",
           user_id: users[1].id,
         },
       ],
