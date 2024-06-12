@@ -9,27 +9,33 @@
     <title>Login</title>
 </head>
 
-<body id="bodybg">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-2">
-                <img src="/static/img/logo.jpg" alt="Logo">
+<body>
+    <div id="root">
+        <nav class="shadow" id="navbar">
+            <!-- Navbar -->
+            <div class="h-100 container d-flex flex-row align-items-center p-1" id="navbar-wrapper">
+                <!-- Navbar Wrapper -->
+                <div class="h-100 d-flex flex-row align-items-center gap-3" id="navbar-leftside">
+                    <!-- Left Side -->
+                    <div id="navbar-logo-wrapper" class="h-100 d-flex flex-row align-items-center">
+                        <!-- Logo Icon -->
+                        <img src="/static/img/logo.png" alt="Logo" id="navbar-logo-img">
+                        <!-- Logo Text -->
+                        <span id="navbar-logo-text">NEXA LINK</span>
+                    </div>
+                    <a href="/" class="navbar-item">Home</a>
+                    <a href="/about" class="navbar-item">About</a>
+                    <a href="/" class="navbar-item">Contact</a>
+                </div>
+                <div class="ms-auto h-100 d-flex flex-row align-items-center gap-3" id="navbar-rightside">
+                </div>
             </div>
-            <div class="col-md-8">
-                <h1 id="texto">
-                    <br>
-                    <br>
-                    Nexa Link (Login)
-                </h1>
-            </div>
-            <div class="col-md-2">
-                <br>
-                <br>
-                <br>
-                <a href="/"><img id="perfilout" src="/static/img/logout.jpg">
-                </a>
-            </div>
-            <div class="col-md-12">
+        </nav>
+    </div>
+    <main class="container root px-1 py-4" id="root">
+        <div class="d-flex flex-row justify-content-center mb-3">
+            <div class="col-md-4">
+                <h1 class="text-center">Login</h1>
                 <div id="boxl">
                     <form action="#" method="post" onsubmit="signin(event);">
                         <div class="d-flex flex-column form-group">
@@ -45,7 +51,6 @@
                                 </div>
                             </div>
                         </div>
-                        <br>
                         <br>
                         <input id="ls" type="submit" value="Sign in" class="submit-btn" />
                     </form>
