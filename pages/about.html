@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <!-- HEAD -->
+
 <head>
     <!-- META -->
     <meta charset="UTF-8">
@@ -11,8 +12,7 @@
     <link rel="icon" type="image/x-icon" href="/static/public/favicon.ico">
     <!-- CSS -->
     <link rel="stylesheet" href="/static/styles/style.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="/static/styles/bootstrap.min.css">
 </head>
 <!-- BODY -->
 
@@ -34,88 +34,71 @@
                 </div>
                 <div class="ms-auto h-100 d-flex flex-row align-items-center gap-3" id="navbar-rightside">
                     <!-- Right Side -->
-                    <div class="dropdown">
-                        <!-- Profile Dropdown -->
-                        <div role="button" id="dropdown-navbar-profile" data-bs-toggle="dropdown" aria-expanded="false">
-                            <!-- Profile Dropdown Button (ICON) -->
+                    <!-- Signout -->
+                    <a class="dropdown-item" href="index.html" onclick="signout(event);">
+                        <div class="d-flex flex-row align-items-center gap-1">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                                stroke="currentColor" class="icon-logout">
+                                stroke="currentColor" class="icon">
                                 <path stroke-linecap="round" stroke-linejoin="round"
-                                    d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                                    d="M15.75 9V5.25A2.25 2.25 0 0 0 13.5 3h-6a2.25 2.25 0 0 0-2.25 2.25v13.5A2.25 2.25 0 0 0 7.5 21h6a2.25 2.25 0 0 0 2.25-2.25V15m3 0 3-3m0 0-3-3m3 3H9" />
                             </svg>
+                            Sair
                         </div>
-
-                        <ul class="dropdown-menu shadow-sm" aria-labelledby="dropdown-navbar-profile"
-                            id="dropdown-navbar-profile-menu">
-                            <!-- --- Profile Dropdown Menu Items --- -->
-                            <!-- Profile -->
-                            <li>
-                                <a class="dropdown-item" href="/p/profile">
-                                    <div class="d-flex flex-row align-items-center gap-1">
-                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                            stroke-width="1.5" stroke="currentColor" class="icon">
-                                            <path stroke-linecap="round" stroke-linejoin="round"
-                                                d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" />
-                                        </svg>
-                                        Perfil
-                                    </div>
-                                </a>
-                            </li>
-                            <!-- My Networks -->
-                            <li>
-                                <a class="dropdown-item" href="/p/networks">
-                                    <div class="d-flex flex-row align-items-center gap-1">
-                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                            stroke-width="1.5" stroke="currentColor" class="icon">
-                                            <path stroke-linecap="round" stroke-linejoin="round"
-                                                d="M12 21a9.004 9.004 0 0 0 8.716-6.747M12 21a9.004 9.004 0 0 1-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 0 1 7.843 4.582M12 3a8.997 8.997 0 0 0-7.843 4.582m15.686 0A11.953 11.953 0 0 1 12 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0 1 21 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0 1 12 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 0 1 3 12c0-1.605.42-3.113 1.157-4.418" />
-                                        </svg>
-                                        Minhas Networks
-                                    </div>
-                                </a>
-                            </li>
-                            <!-- Divider -->
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
-                            <!-- Signout -->
-                            <li>
-                                <a class="dropdown-item" href="#" onclick="signout(event);">
-                                    <div class="d-flex flex-row align-items-center gap-1">
-                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                            stroke-width="1.5" stroke="currentColor" class="icon">
-                                            <path stroke-linecap="round" stroke-linejoin="round"
-                                                d="M15.75 9V5.25A2.25 2.25 0 0 0 13.5 3h-6a2.25 2.25 0 0 0-2.25 2.25v13.5A2.25 2.25 0 0 0 7.5 21h6a2.25 2.25 0 0 0 2.25-2.25V15m3 0 3-3m0 0-3-3m3 3H9" />
-                                        </svg>
-                                        Sair
-                                    </div>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
+                    </a>
+                    </ul>
                 </div>
             </div>
-        </nav>
-        <main class="container root px-1 py-4" id="root">
-            <div class="d-flex flex-row justify-content-center mb-3">
-                <div class="d-flex p-2">Diogo Castro</div>
-                <div class="p-2">Nuno Oliveira</div>
-                <div class="p-2">Pedro Cruz</div>
-              </div>
+    </div>
+    </nav>
+    <main class="container root px-1 py-4" id="root">
+        <div class="d-flex flex-row justify-content-center mb-3">
+            <div class="col-md-4 text-center">
+                <h1>Diogo Castro</h1>
+                <img src="/static/img/logo.png" alt="Diogo Castro" class="rounded-circle"
+                    style="width: 200px; height: 200px;">
+                <h2>Responsabilidades:</h2>
+                <ul>
+                    <li>backend;</li>
+                    <li>organização;</li>
+                    <li>base de dados</li>
+                </ul>
+            </div>
+            <div class="col-md-4 text-center">
+                <h1>Nuno Oliveira</h1>
+                <img src="/static/img/logo.png" alt="Nuno Oliveira" class="rounded-circle"
+                    style="width: 200px; height: 200px;">
+                <h2>Responsabilidades:</h2>
+                <ul>
+                    <li>frontend:login,signup,dashboard</li>
+                    <li>crud</li>
+                </ul>
+            </div>
+            <div class="col-md-4 text-center">
+                <h1>Pedro Cruz</h1>
+                <img src="/static/img/logo.png" alt="Pedro Cruz" class="rounded-circle"
+                    style="width: 200px; height: 200px;">
+                <h2>Responsabilidades:</h2>
+                <ul>
+                    <li>Modelo Relacional</li>
+                    <li>frontend:About</li>
+                    <li>Modais</li>
+                    <li>style</li>
+                </ul>
+            </div>
         </div>
-            <!-- Content -->
-        </main>
-        <!--
+        <!-- Content -->
+    </main>
+    <!--
         <footer>
             <!-\- Footer --\>
         </footer>
         -->
-        <!-- SCRIPTS -->
-    </div>
+    <!-- SCRIPTS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
     <script src="/static/scripts/script.js"></script>
 
 </body>
+
 </html>
