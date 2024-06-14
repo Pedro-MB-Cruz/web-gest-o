@@ -18,86 +18,52 @@
 
 <body>
     <div id="root">
-        <nav class="shadow" id="navbar">
-            <!-- Navbar -->
-            <div class="h-100 container d-flex flex-row align-items-center p-1" id="navbar-wrapper">
-                <!-- Navbar Wrapper -->
-                <div class="h-100 d-flex flex-row align-items-center gap-3" id="navbar-leftside">
-                    <!-- Left Side -->
-                    <div id="navbar-logo-wrapper" class="h-100 d-flex flex-row align-items-center">
-                        <!-- Logo Icon -->
-                        <img src="/static/img/logo.png" alt="Logo" id="navbar-logo-img">
-                        <!-- Logo Text -->
-                        <span id="navbar-logo-text">NEXA LINK</span>
-                    </div>
-                    <a href="/contactos" class="navbar-item">contactos</a>
+        <main class="container root px-1 py-4" id="root">
+            <div class="d-flex flex-row justify-content-center mb-3">
+                <div class="col-md-4 text-center">
+                    <h1>Diogo Castro</h1>
+                    <img src="/static/img/logo.png" alt="Diogo Castro" class="rounded-circle"
+                        style="width: 200px; height: 200px;">
+                    <h2>Responsabilidades:</h2>
+                    <ul>
+                        <li>backend;</li>
+                        <li>organização;</li>
+                        <li>base de dados</li>
+                    </ul>
                 </div>
-                <div class="ms-auto h-100 d-flex flex-row align-items-center gap-3" id="navbar-rightside">
-                    <!-- Right Side -->
-                    <!-- Signout -->
-                    <a class="dropdown-item" href="/" onclick="signout(event);">
-                        <div class="d-flex flex-row align-items-center gap-1">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                                stroke="currentColor" class="icon">
-                                <path stroke-linecap="round" stroke-linejoin="round"
-                                    d="M15.75 9V5.25A2.25 2.25 0 0 0 13.5 3h-6a2.25 2.25 0 0 0-2.25 2.25v13.5A2.25 2.25 0 0 0 7.5 21h6a2.25 2.25 0 0 0 2.25-2.25V15m3 0 3-3m0 0-3-3m3 3H9" />
-                            </svg>
-                            Sair
-                        </div>
-                    </a>
+                <div class="col-md-4 text-center">
+                    <h1>Nuno Oliveira</h1>
+                    <img src="/static/img/logo.png" alt="Nuno Oliveira" class="rounded-circle"
+                        style="width: 200px; height: 200px;">
+                    <h2>Responsabilidades:</h2>
+                    <ul>
+                        <li>frontend:login,signup,dashboard</li>
+                        <li>crud</li>
+                    </ul>
+                </div>
+                <div class="col-md-4 text-center">
+                    <h1>Pedro Cruz</h1>
+                    <img src="/static/img/logo.png" alt="Pedro Cruz" class="rounded-circle"
+                        style="width: 200px; height: 200px;">
+                    <h2>Responsabilidades:</h2>
+                    <ul>
+                        <li>Modelo Relacional</li>
+                        <li>frontend:About</li>
+                        <li>Modais</li>
+                        <li>style</li>
                     </ul>
                 </div>
             </div>
-        </nav>
-    </div>
-    <main class="container root px-1 py-4" id="root">
-        <div class="d-flex flex-row justify-content-center mb-3">
-            <div class="col-md-4 text-center">
-                <h1>Diogo Castro</h1>
-                <img src="/static/img/logo.png" alt="Diogo Castro" class="rounded-circle"
-                    style="width: 200px; height: 200px;">
-                <h2>Responsabilidades:</h2>
-                <ul>
-                    <li>backend;</li>
-                    <li>organização;</li>
-                    <li>base de dados</li>
-                </ul>
-            </div>
-            <div class="col-md-4 text-center">
-                <h1>Nuno Oliveira</h1>
-                <img src="/static/img/logo.png" alt="Nuno Oliveira" class="rounded-circle"
-                    style="width: 200px; height: 200px;">
-                <h2>Responsabilidades:</h2>
-                <ul>
-                    <li>frontend:login,signup,dashboard</li>
-                    <li>crud</li>
-                </ul>
-            </div>
-            <div class="col-md-4 text-center">
-                <h1>Pedro Cruz</h1>
-                <img src="/static/img/logo.png" alt="Pedro Cruz" class="rounded-circle"
-                    style="width: 200px; height: 200px;">
-                <h2>Responsabilidades:</h2>
-                <ul>
-                    <li>Modelo Relacional</li>
-                    <li>frontend:About</li>
-                    <li>Modais</li>
-                    <li>style</li>
-                </ul>
-            </div>
-        </div>
-        <!-- Content -->
-    </main>
-    <!--
+            <!-- Content -->
+        </main>
+        <!--
         <footer>
             <!-\- Footer --\>
         </footer>
         -->
-    <!-- SCRIPTS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-        crossorigin="anonymous"></script>
-    <script src="/static/scripts/script.js"></script>
+        <!-- SCRIPTS -->
+        <script src="/static/scripts/bootstrap.bundle.min.js"></script>
+        <script src="/static/scripts/script.js"></script>
 
 </body>
 

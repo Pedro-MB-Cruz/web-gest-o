@@ -11,133 +11,98 @@
 
 <body>
     <div id="root">
-        <nav class="shadow" id="navbar">
-            <!-- Navbar -->
-            <div class="h-100 container d-flex flex-row align-items-center p-1" id="navbar-wrapper">
-                <!-- Navbar Wrapper -->
-                <div class="h-100 d-flex flex-row align-items-center gap-3" id="navbar-leftside">
-                    <!-- Left Side -->
-                    <div id="navbar-logo-wrapper" class="h-100 d-flex flex-row align-items-center">
-                        <!-- Logo Icon -->
-                        <img src="/static/img/logo.png" alt="Logo" id="navbar-logo-img">
-                        <!-- Logo Text -->
-                        <span id="navbar-logo-text">NEXA LINK</span>
-                    </div>
-                    <a href="/" class="navbar-item">Home</a>
-                </div>
-                <div class="ms-auto h-100 d-flex flex-row align-items-center gap-3" id="navbar-rightside">
-                    <!-- Right Side -->
-                    <!-- Signout -->
-                    <a class="dropdown-item" href="/" onclick="signout(event);">
-                        <div class="d-flex flex-row align-items-center gap-1">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                                stroke="currentColor" class="icon">
-                                <path stroke-linecap="round" stroke-linejoin="round"
-                                    d="M15.75 9V5.25A2.25 2.25 0 0 0 13.5 3h-6a2.25 2.25 0 0 0-2.25 2.25v13.5A2.25 2.25 0 0 0 7.5 21h6a2.25 2.25 0 0 0 2.25-2.25V15m3 0 3-3m0 0-3-3m3 3H9" />
-                            </svg>
-                            Sair
+        <main class="container root px-1 py-4" id="root">
+            <div class="d-flex flex-row justify-content-center mb-3">
+                <div class="col-md-4">
+                    <h1 class="text-center">Singn Up</h1>
+                    <div class="col-md-12">
+                        <div id="boxs">
+                            <form action="#" method="post" onsubmit="signup(event);">
+                                <div class="d-flex flex-column form-group">
+                                    <label for="username">Nome de Utilizador:</label>
+                                    <input type="text" id="username" name="username" placeholder="Username" />
+                                </div>
+                                <div class="d-flex flex-column form-group">
+                                    <label for="email">Email:</label>
+                                    <input type="email" id="email" name="email" placeholder="Email" />
+                                </div>
+                                <div class="d-flex flex-column form-group">
+                                    <label for="password">Senha: </label>
+                                    <div class="d-flex gap-1">
+                                        <input type="password" id="password" name="password" placeholder="Password"
+                                            class="flex-fill" />
+                                        <div class="hide-show-password icon" id="password-input-icon">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="d-flex flex-column form-group">
+                                    <label for="retype-password">Confirmar Senha</label>
+                                    <div class="d-flex gap-1">
+                                        <input type="password" placeholder="Confirm Password" name="retype-password"
+                                            id="retype-password" class="flex-fill" />
+                                        <div class="hide-show-password icon" id="retype-password-input-icon">
+                                        </div>
+                                    </div>
+                                </div>
+                                <br>
+                                <input id="ls" type="submit" value="Sign up" class="submit-btn" />
+                            </form>
                         </div>
-                    </a>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-    </div>
-    <main class="container root px-1 py-4" id="root">
-        <div class="d-flex flex-row justify-content-center mb-3">
-            <div class="col-md-4">
-                <h1 class="text-center">Singn Up</h1>
-                <div class="col-md-12">
-                    <div id="boxs">
-                        <form action="#" method="post" onsubmit="signup(event);">
-                            <div class="d-flex flex-column form-group">
-                                <label for="username">Nome de Utilizador:</label>
-                                <input type="text" id="username" name="username" placeholder="Username" />
-                            </div>
-                            <div class="d-flex flex-column form-group">
-                                <label for="email">Email:</label>
-                                <input type="email" id="email" name="email" placeholder="Email" />
-                            </div>
-                            <div class="d-flex flex-column form-group">
-                                <label for="password">Senha: </label>
-                                <div class="d-flex gap-1">
-                                    <input type="password" id="password" name="password" placeholder="Password"
-                                        class="flex-fill" />
-                                    <div class="hide-show-password icon" id="password-input-icon">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="d-flex flex-column form-group">
-                                <label for="retype-password">Confirmar Senha</label>
-                                <div class="d-flex gap-1">
-                                    <input type="password" placeholder="Confirm Password" name="retype-password"
-                                        id="retype-password" class="flex-fill" />
-                                    <div class="hide-show-password icon" id="retype-password-input-icon">
-                                    </div>
-                                </div>
-                            </div>
-                            <br>
-                            <input id="ls" type="submit" value="Sign up" class="submit-btn" />
-                        </form>
                     </div>
                 </div>
             </div>
-        </div>
+            <script>
 
-        <script src="/static/scripts/script.js"></script>
-        <script>
-
-            document.getElementById("password-input-icon").addEventListener('click', showPassword);
-            document.getElementById("password-input-icon").innerHTML = showPasswordSVG;
-            document.getElementById("retype-password-input-icon").addEventListener('click', showPassword);
-            document.getElementById("retype-password-input-icon").innerHTML = showPasswordSVG;
+                document.getElementById("password-input-icon").addEventListener('click', showPassword);
+                document.getElementById("password-input-icon").innerHTML = showPasswordSVG;
+                document.getElementById("retype-password-input-icon").addEventListener('click', showPassword);
+                document.getElementById("retype-password-input-icon").innerHTML = showPasswordSVG;
 
 
-            function signup(e) {
-                e.preventDefault();
-                const username = e.target.username.value;
-                const email = e.target.email.value;
-                const password = e.target.password.value;
-                const retypePassword = e.target['retype-password'].value;
+                function signup(e) {
+                    e.preventDefault();
+                    const username = e.target.username.value;
+                    const email = e.target.email.value;
+                    const password = e.target.password.value;
+                    const retypePassword = e.target['retype-password'].value;
 
-                if (password !== retypePassword) {
-                    alert('Passwords do not match');
-                    return;
-                }
-
-                fetch('/api/auth/signup', {
-                    method: 'POST',
-                    credentials: "include",
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({
-                        username,
-                        //email,
-                        password
-                    })
-                }).then(res => {
-                    if (res.status !== 201) {
-                        return res.json().then(data => {
-                            throw data;
-                        });
+                    if (password !== retypePassword) {
+                        alert('Passwords do not match');
+                        return;
                     }
-                    return res.json();
-                })
-                    .then(data => {
-                        alert('User created successfully');
-                        window.location.href = '/signin';
+
+                    fetch('/api/auth/signup', {
+                        method: 'POST',
+                        credentials: "include",
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            username,
+                            //email,
+                            password
+                        })
+                    }).then(res => {
+                        if (res.status !== 201) {
+                            return res.json().then(data => {
+                                throw data;
+                            });
+                        }
+                        return res.json();
                     })
-                    .catch(err => {
-                        alert(err.message);
-                    });
-            }
-        </script>
+                        .then(data => {
+                            alert('User created successfully');
+                            window.location.href = '/signin';
+                        })
+                        .catch(err => {
+                            alert(err.message);
+                        });
+                }
+            </script>
 
 
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-            crossorigin="anonymous"></script>
+            <script src="/static/scripts/bootstrap.bundle.min.js"></script>
+            <script src="/static/scripts/script.js"></script>
 </body>
 
 </html>
