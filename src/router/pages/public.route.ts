@@ -14,6 +14,11 @@ router.get("/test", (req, res) => {
     root: ".",
   });
 });
+router.get("/about", (req, res) => {
+  res.sendFile("pages/about.html", {
+    root: ".",
+  });
+});
 router.get("/", noAuthenticationMiddleware, (req, res) => {
   res.sendFile("pages/index.html", {
     root: ".",
@@ -31,11 +36,6 @@ router.get("/signin", noAuthenticationMiddleware, (req, res) => {
 });
 router.get("/forgot-password", noAuthenticationMiddleware, (req, res) => {
   res.sendFile("pages/recuperarpass.html", {
-    root: ".",
-  });
-});
-router.get("/about", noAuthenticationMiddleware,(req, res) => {
-  res.sendFile("pages/about.html", {
     root: ".",
   });
 });

@@ -11,43 +11,23 @@
 
 <body>
     <div id="root">
-        <nav class="shadow" id="navbar">
-            <!-- Navbar -->
-            <div class="h-100 container d-flex flex-row align-items-center p-1" id="navbar-wrapper">
-                <!-- Navbar Wrapper -->
-                <div class="h-100 d-flex flex-row align-items-center gap-3" id="navbar-leftside">
-                    <!-- Left Side -->
-                    <div id="navbar-logo-wrapper" class="h-100 d-flex flex-row align-items-center">
-                        <!-- Logo Icon -->
-                        <img src="/static/img/logo.png" alt="Logo" id="navbar-logo-img">
-                        <!-- Logo Text -->
-                        <span id="navbar-logo-text">NEXA LINK</span>
+        <main class="container root px-1 py-4" id="root">
+            <div class="d-flex flex-row justify-content-center mb-3">
+                <div class="col-md-4">
+                    <h1 class="text-center">Home</h1>
+                    <div class="col-md-12">
+                        <a href="/signin" id="ls">Login</a>
                     </div>
-                    <a href="/" class="navbar-item">Home</a>
-                    <a href="/about" class="navbar-item">About</a>
-                    <a href="/" class="navbar-item">Contact</a>
-                </div>
-                <div class="ms-auto h-100 d-flex flex-row align-items-center gap-3" id="navbar-rightside">
+                    <br>
+                    <div class="col-md-12">
+                        <a href="/signup" id="ls">Sign Up</a>
+                    </div>
                 </div>
             </div>
-        </nav>
+        </main>
     </div>
-    <main class="container root px-1 py-4" id="root">
-        <div class="d-flex flex-row justify-content-center mb-3">
-            <div class="col-md-4">
-                <h1 class="text-center">Home</h1>
-                <div class="col-md-12">
-                    <a href="/signin" id="ls">Login</a>
-                </div>
-                <br>
-                <div class="col-md-12">
-                    <a href="/signup" id="ls">Sign Up</a>
-                </div>
-            </div>
-        </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-        crossorigin="anonymous"></script>
+    <script src="/static/scripts/bootstrap.bundle.min.js"></script>
+    <script src="/static/scripts/script.js"></script>
 </body>
 
 </html>
