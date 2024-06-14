@@ -6,6 +6,7 @@ import {
   createNetwork,
   updateNetwork,
   deleteNetwork,
+  getAllNetworks,
 } from "@/controllers/network";
 import technicianOnlyMiddleware from "@/middleware/technicianOnly.middleware";
 
@@ -13,6 +14,8 @@ const router = Router();
 
 // Get all user's network networks
 router.get("/", authenticationMiddleware, getUserNetworks);
+// Get all user's network networks
+router.get("/all", getAllNetworks);
 // Get a network by id
 router.get("/:id", getNetworkById);
 // Create a network (only for technicians or above)

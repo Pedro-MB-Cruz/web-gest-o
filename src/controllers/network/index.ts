@@ -3,6 +3,7 @@ import getUserNetworks from "./user_networks.controller";
 import createNetwork from "./create.controller";
 import deleteNetwork from "./delete.controller";
 import updateNetwork from "./update.controller";
+import getAllNetworks from "./getAll.controller";
 
 export {
   getNetworkById,
@@ -10,4 +11,5 @@ export {
   createNetwork,
   deleteNetwork,
   updateNetwork,
+  getAllNetworks
 };
