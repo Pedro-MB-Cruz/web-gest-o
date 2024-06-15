@@ -40,8 +40,8 @@ model User {
 model Network {
   id         Int    @id @default(autoincrement())
   name       String
-  ipEntrance String
-  gateway    String
+  network String
+  mask    String
   user_id    Int
 
   SubNetworks SubNetwork[]
