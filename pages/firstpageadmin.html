@@ -171,7 +171,7 @@ const novaRede = async () => {
   };
 
   try {
-    const response = await fetch('/api/network/', {
+    const response = await fetch('/api/network', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(dados)

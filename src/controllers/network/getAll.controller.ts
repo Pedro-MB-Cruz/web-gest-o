@@ -1,5 +1,5 @@
 import db from "@/prisma/prisma";
-import { Response } from "express";
+import { Request, Response } from "express";
 
 export default async function getAllNetworks(
   req: Request,
