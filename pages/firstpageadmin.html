@@ -171,7 +171,7 @@ const novaRede = async () => {
   };
 
   try {
-    const response = await fetch('/api/network/all', {
+    const response = await fetch('/api/network/', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(dados)
@@ -195,7 +195,7 @@ const novaRede = async () => {
   </script>
   <script>
     const apagaRede = async (id) => {
-      fetch("/api/network/all" + id, {
+      fetch("/api/network/:id" + id, {
         method: "DELETE",
         headers: { "Content-Type": "application/json" },
       })
@@ -223,7 +223,7 @@ const novaRede = async () => {
   <script>
     const EditRede = async (id) => {
       //alert("aaaa")
-      const response = await fetch('/api/network/all' + id)
+      const response = await fetch('/api/network/:id' + id)
       const rede = await response.json()
 
       document.getElementById("muname").value = rede[0].name;
@@ -239,7 +239,7 @@ const novaRede = async () => {
         Ip: document.getElementById("muipEntrance").value,
         Gateway: document.getElementById("mugateway").value,
       };
-      fetch("/api/network/all", {
+      fetch("/api/network/:id", {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(dados),
