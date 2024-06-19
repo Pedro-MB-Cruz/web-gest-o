@@ -217,11 +217,146 @@
     </div>
   </div>
   </div>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-    crossorigin="anonymous"></script>
-  <script src="./scripts/load.js">
+  <script>
+    const listarRedes = async () => {
+      let strHtml = ``
+      //alert("aaaa")
+      const response = await fetch('/api/network/all')
+      const lv = await response.json()
+      for (const rede of lv) {
+        console.log(rede)
+        strHtml += `
+                  <tr>
+                    <td>${rede.id}</td>
+                      <td>${rede.name}</td>
+                      <td>${rede.ipEntrance}</td>
+                      <td>${rede.gateway}</td>
+                      <td>
+                          <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#upModal" onclick="EditRede(${rede.id})"><i class="fa fa-pencil"></i> Editar</button>
+                          <button type='button' class='btn btn-danger' onclick="apagaRede(${rede.id})"><i class="fa fa-trash"></i> Apagar</button>
+                      </td>
+                  </tr>
+                      `
+      }
+      document.getElementById("cardRedes").innerHTML = strHtml;
+    }
+    listarRedes();
+  </script>
 
+  <script>
+    fetch("/api/network/all")
+      .then(response => response.json())
+      .then(data => {
+        console.log(data);
+      })
+  </script>
+  <script>
+const novaRede = async () => {
+  var dados = {
+    id: document.getElementById("mname").value,
+    Network: document.getElementById("mipEntrance").value,
+    Mask: document.getElementById("mgateway").value,
+  };
+
+  try {
+    const response = await fetch('/api/network', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(dados)
+    });
+
+    if (!response.ok) {
+      throw new Error('Erro ao obter os dados');
+    }
+
+    const data = await response.json();
+
+    const resposta = `A rede com ID: ${dados.id} foi adicionada com sucesso!`;
+    alert(resposta);
+
+    listarRedes();
+  } catch (error) {
+    console.error('Houve um erro:', error);
+  }
+};
+
+  </script>
+  <script>
+    const apagaRede = async (id) => {
+      fetch("/api/network/:id" + id, {
+        method: "DELETE",
+        headers: { "Content-Type": "application/json" },
+      })
+        .then((response) => {
+          // Verifica se a resposta foi bem sucedida
+          if (!response.ok) {
+            throw new Error("Erro ao obter os dados");
+          }
+          return response;
+        })
+        .then((data) => {
+          // Faz algo com os dados
+          //console.log(data);
+          resposta = "O carro foi apagado com sucesso!";
+          alert(resposta);
+          listarRede();
+        })
+        .catch((error) => {
+          // Captura qualquer erro de rede ou tratamento de erro
+          console.error("Houve um erro:", error);
+        });
+    };
+
+  </script>
+  <script>
+    const EditRede = async (id) => {
+      //alert("aaaa")
+      const response = await fetch('/api/network/:id' + id)
+      const rede = await response.json()
+
+      document.getElementById("muname").value = rede[0].name;
+      document.getElementById("muipEntrance").value = rede[0].ipEntrace;
+      document.getElementById("mugateway").value = rede[0].gateway;
+    }
+
+  </script>
+  <script>
+    const atualizaRede = async () => {
+      var dados = {
+        Name: document.getElementById("muname").value,
+        Ip: document.getElementById("muipEntrance").value,
+        Gateway: document.getElementById("mugateway").value,
+      };
+      fetch("/api/network/:id", {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(dados),
+      })
+        .then((response) => {
+          // Verifica se a resposta foi bem sucedida
+          if (!response.ok) {
+            throw new Error("Erro ao obter os dados");
+          }
+          // Converte a resposta para JSON
+          return response.json();
+        })
+        .then((data) => {
+          // Faz algo com os dados
+          //console.log(data);
+          resposta = "O carro com a marca: " + dados.Marca + " foi atualizado com sucesso!";
+          alert(resposta);
+          listarCarros();
+        })
+        .catch((error) => {
+          // Captura qualquer erro de rede ou tratamento de erro
+          console.error("Houve um erro:", error);
+        });
+    };
+
+   </script>
+   <script src="/static/scripts/bootstrap.bundle.min.js"></script>
+   <script src="/static/scripts/load.js"></script>
+   <script src="/static/scripts/script.js"></script>
   </script>
 </body>
 
