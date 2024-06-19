@@ -16,206 +16,94 @@
 
 <body>
   <div id="root">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-3">
-        <div class="card h-100" style="width: 100%;">
-          <img src="/static/img/planta_ebi_piso0.jpg" alt="Card Image" style="width: 100%;">
-          <div class="card-body">
-            <h4 class="card-title">Entrada</h4>
-            <p>Refeitório</p>
-            <p>Repografia</p>
-            <p>Secretaria</p>
-            <a href="#" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal0">Ver tabela de
-              Redes</a>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-3">
-        <div class="card h-100" style="width: 100%;">
-          <img src="img/blocoA.jpg" alt="Card Image" style="width: 100%;">
-          <div class="card-body">
-            <h4 class="card-title">Bloco A</h4>
-            <p>Sala 9 - Sala 15</p>
-            <a href="#" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal1">Ver tabela de
-              Redes</a>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-3">
-        <div class="card h-100" style="width: 100%;">
-          <img src="img/blocoB.jpg" alt="Card Image" style="width: 100%;">
-          <div class="card-body">
-            <h4 class="card-title">Bloco B</h4>
-            <p>Sala 16 - Sala DT</p>
-            <a href="#" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal2">Ver tabela de
-              Redes</a>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-3">
-        <div class="card h-100" style="width: 100%;">
-          <img src="img/BLOCOc.jpg" alt="Card Image" style="width: 100%;">
-          <div class="card-body">
-            <h4 class="card-title">Bloco C</h4>
-            <p>Sala TIC</p>
-            <p>Bar</p>
-            <a href="#" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal3">Ver tabela de
-              Redes</a>
+    <div class="container">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <h2>
+              Lista de Redes
+            </h2>
+            <table class="table table-bordered">
+              <tr>
+                <th>Id</th>
+                <th>Network</th>
+                <th>Gateway</th>
+                <th><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addModal"><i
+                      class="fa fa-solid fa-plus"></i> Novo</button></th>
+              </tr>
+              <tr id="cardRedes">
+                <td>Id</td>
+                <td>Network</td>
+                <td>Gateway</td>
+                <td><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#upModal"><i
+                      class="fa fa-pencil"></i> Editar</button>
+                  <button type='button' class='btn btn-danger'><i class="fa fa-trash"></i> Apagar</button>
+                </td>
+              </tr>
+            </table>
           </div>
         </div>
       </div>
     </div>
-  </div>
 
-  <div class="modal" id="myModal0">
-    <div class="modal-dialog">
-      <div class="modal-content">
-
-
-        <div class="modal-header">
-          <h4 class="modal-title">Gestão de Redes da Entrada</h4>
-          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+    <div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="addModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="addModalLabel">Adicionar Rede</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <div class="mb-3">
+              <label for="Marca" class="form-label">Name</label>
+              <input type="text" class="form-control" id="mname" name="name" />
+            </div>
+            <div class="mb-3">
+              <label for="Detalhes" class="form-label">Ip</label>
+              <input type="text" class="form-control" id="mipEntrance" name="ip" />
+            </div>
+            <div class="mb-3">
+              <label for="Detalhes" class="form-label">Gateway</label>
+              <input type="text" class="form-control" id="mgateway" name="gateway" />
+            </div>
+            <button type="button" class="btn btn-primary" onclick="novaRede()"><i class="fa-solid fa-floppy-disk"></i>
+              Adicionar</button>
+            <button type="button" class="btn btn-danger" data-bs-dismiss="modal" aria-label="Close"><i
+                class="fa-solid fa-door-closed"></i> Fechar</button>
+          </div>
         </div>
-
-        <div class="modal-body">
-          <table class="table" id="table-entrance">
-            <tr>
-              <th>Id</th>
-              <th>Name</th>
-              <th>Ip</th>
-              <th>mask</th>
-              <th>network</th>
-            </tr>
-          </table>
-        </div>
-
-        <div class="modal-footer">
-          <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Fechar</button>
-        </div>
-
       </div>
     </div>
-  </div>
-  <div class="modal" id="myModal1">
-    <div class="modal-dialog">
-      <div class="modal-content">
 
+    <div class="modal fade" id="upModal" tabindex="-1" aria-labelledby="upModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="addModalLabel">Alterar Rede</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <div class="mb-3">
+              <label for="Marca" class="form-label">Name</label>
+              <input type="text" class="form-control" id="mname" name="name">
+            </div>
+            <div class="mb-3">
+              <label for="Detalhes" class="form-label">Ip</label>
+              <input type="text" class="form-control" id="mipEntrance" name="ip">
+            </div>
+            <div class="mb-3">
+              <label for="Detalhes" class="form-label">Gateway</label>
+              <input type="text" class="form-control" id="mgateway" name="gateway">
+            </div>
+            <button type="button" class="btn btn-primary" onclick="atualizaRede()"><i
+                class="fa-solid fa-floppy-disk"></i> Editar</button>
 
-        <div class="modal-header">
-          <h4 class="modal-title">Gestão de Redes do Bloco A</h4>
-          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            <button type="button" class="btn btn-danger" data-bs-dismiss="modal" aria-label="Close"><i
+                class="fa-solid fa-door-closed"></i> Fechar</button>
+          </div>
         </div>
-
-        <div class="modal-body">
-          <table class="table" id="table-bloca">
-            <tr>
-              <th>Id</th>
-              <th>Name</th>
-              <th>Ip</th>
-              <th>mask</th>
-              <th>network</th>
-            </tr>
-          </table>
-        </div>
-
-        <div class="modal-footer">
-          <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Fechar</button>
-        </div>
-
       </div>
     </div>
-  </div>
-  <div class="modal" id="myModal2">
-    <div class="modal-dialog">
-      <div class="modal-content">
-
-
-        <div class="modal-header">
-          <h4 class="modal-title">Gestão de Redes do Bloco B</h4>
-          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-        </div>
-
-        <div class="modal-body">
-          <table class="table" id="table-blocb">
-            <tr>
-              <th>Id</th>
-              <th>Name</th>
-              <th>Ip</th>
-              <th>Mask</th>
-              <th>Network</th>
-            </tr>
-
-          </table>
-        </div>
-
-        <div class="modal-footer">
-          <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Fechar</button>
-        </div>
-
-      </div>
-    </div>
-  </div>
-  <div class="modal" id="myModal3">
-    <div class="modal-dialog">
-      <div class="modal-content">
-
-
-        <div class="modal-header">
-          <h4 class="modal-title">Gestão de Redes do Bloco C</h4>
-          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-        </div>
-
-        <div class="modal-body">
-          <table class="table" id="table-blocc">
-            <tr>
-              <th>Id</th>
-              <th>Name</th>
-              <th>Ip</th>
-              <th>mask</th>
-              <th>network</th>
-            </tr>
-
-          </table>
-        </div>
-
-        <div class="modal-footer">
-          <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Fechar</button>
-        </div>
-
-      </div>
-    </div>
-  </div>
-
-  <div class="modal" id="myModal">
-    <div class="modal-dialog">
-      <div class="modal-content">
-
-        <div class="modal-header">
-          <h3 class="modal-title">Adicionar Rede</h3>
-          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-        </div>
-
-        <div class="modal-body">
-          <h5>Id</h5>
-          <input id="label" type="text" id="fname" name="fname">
-          <h5>Name</h5>
-          <input id="label" type="text" id="fname" name="fname">
-          <h5>Ip</h5>
-          <input id="label" type="text" id="fname" name="fname">
-          <h5>Mask</h5>
-          <input id="label" type="text" id="fname" name="fname">
-          <h5>Network</h5>
-          <input id="label" type="text" id="fname" name="fname">
-        </div>
-
-        <div class="modal-footer">
-          <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Adicionar</button>
-        </div>
-
-      </div>
-    </div>
-  </div>
   </div>
   <script>
     const listarRedes = async () => {
@@ -251,34 +139,34 @@
       })
   </script>
   <script>
-const novaRede = async () => {
-  var dados = {
-    id: document.getElementById("mname").value,
-    Network: document.getElementById("mipEntrance").value,
-    Mask: document.getElementById("mgateway").value,
-  };
+    const novaRede = async () => {
+      var dados = {
+        id: document.getElementById("mname").value,
+        Network: document.getElementById("mipEntrance").value,
+        Mask: document.getElementById("mgateway").value,
+      };
 
-  try {
-    const response = await fetch('/api/network', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(dados)
-    });
+      try {
+        const response = await fetch('/api/network', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(dados)
+        });
 
-    if (!response.ok) {
-      throw new Error('Erro ao obter os dados');
-    }
+        if (!response.ok) {
+          throw new Error('Erro ao obter os dados');
+        }
 
-    const data = await response.json();
+        const data = await response.json();
 
-    const resposta = `A rede com ID: ${dados.id} foi adicionada com sucesso!`;
-    alert(resposta);
+        const resposta = `A rede com ID: ${dados.id} foi adicionada com sucesso!`;
+        alert(resposta);
 
-    listarRedes();
-  } catch (error) {
-    console.error('Houve um erro:', error);
-  }
-};
+        listarRedes();
+      } catch (error) {
+        console.error('Houve um erro:', error);
+      }
+    };
 
   </script>
   <script>
@@ -353,10 +241,10 @@ const novaRede = async () => {
         });
     };
 
-   </script>
-   <script src="/static/scripts/bootstrap.bundle.min.js"></script>
-   <script src="/static/scripts/load.js"></script>
-   <script src="/static/scripts/script.js"></script>
+  </script>
+  <script src="/static/scripts/bootstrap.bundle.min.js"></script>
+  <script src="/static/scripts/load.js"></script>
+  <script src="/static/scripts/script.js"></script>
   </script>
 </body>
 
