@@ -14,7 +14,7 @@
     "db:seed": "npx prisma db seed",
     "db:studio": "npx prisma studio",
     "start:prod": "node dist/server.js",
-    "build": "tsup src",
+    "build": "tsup  src --minify",
     "build:run": "npm run build && npm run start:prod"
   },
   "keywords": [],

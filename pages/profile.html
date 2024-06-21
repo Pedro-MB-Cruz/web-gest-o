@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- HEAD -->
+
+<head>
+    <!-- META -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- TITLE -->
+    <title>Nexa Link</title>
+    <!-- FAVICON -->
+    <link rel="icon" type="image/x-icon" href="/static/public/favicon.ico">
+    <!-- CSS -->
+    <link rel="stylesheet" href="/static/styles/style.css">
+    <link rel="stylesheet" href="/static/styles/bootstrap.min.css">
+
+</head>
+
+<!-- BODY -->
+<body>
+    <div id="root">
+        <main class="container root px-1 py-4" id="root">
+            <div class="d-flex flex-row justify-content-center mb-3">
+                <div class="col-md-4 text-center">
+                    <img src="/static/img/logo.png" alt="Nuno Oliveira" class="rounded-circle" style="width: 200px; height: 200px;">
+                    <h1 id="name"></h1>
+                    <h5>Role: <p id="role"></p></h5>
+                </div>
+            </div>            <!-- Content -->
+        </main>
+        <!--
+        <footer>
+            <!-\- Footer --\>
+        </footer>
+        -->
+        <!-- SCRIPTS -->
+        <script src="/static/scripts/bootstrap.bundle.min.js"></script>
+        <script src="/static/scripts/script.js"></script>
+
+        <script>
+            const res = fetch('/api/user', {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            }).then((res) => {
+                return res.json();
+            }).then((data) => {
+                document.getElementById('name').innerText = data.username;
+                document.getElementById('role').innerText = forceCapitalize(data.role);
+            });
+
+            const forceCapitalize = (str) => {
+                return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
+            };
+
+
+
+        </script>
+
+</body>
+
+</html>
