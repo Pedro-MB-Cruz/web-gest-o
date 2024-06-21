@@ -23,15 +23,16 @@
             <h2>
               Lista de Redes
             </h2>
-            <table class="table table-bordered">
+            <table class="table table-bordered" id="table-networks">
               <tr>
                 <th>Id</th>
                 <th>Network</th>
+                <th>IP Entrance</th>
                 <th>Gateway</th>
                 <th><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addModal"><i
                       class="fa fa-solid fa-plus"></i> Novo</button></th>
               </tr>
-              <tr id="cardRedes">
+              <!--<tr id="cardRedes">
                 <td>Id</td>
                 <td>Network</td>
                 <td>Gateway</td>
@@ -39,7 +40,7 @@
                       class="fa fa-pencil"></i> Editar</button>
                   <button type='button' class='btn btn-danger'><i class="fa fa-trash"></i> Apagar</button>
                 </td>
-              </tr>
+              </tr>-->
             </table>
           </div>
         </div>
@@ -83,19 +84,20 @@
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
+            <input type="hidden" name="muid" value="0" hidden>
             <div class="mb-3">
               <label for="Marca" class="form-label">Name</label>
-              <input type="text" class="form-control" id="mname" name="name">
+              <input type="text" class="form-control" id="muname" name="muname">
             </div>
             <div class="mb-3">
               <label for="Detalhes" class="form-label">Ip</label>
-              <input type="text" class="form-control" id="mipEntrance" name="ip">
+              <input type="text" class="form-control" id="muipEntrance" name="muipEntrance">
             </div>
             <div class="mb-3">
               <label for="Detalhes" class="form-label">Gateway</label>
-              <input type="text" class="form-control" id="mgateway" name="gateway">
+              <input type="text" class="form-control" id="mugateway" name="mugateway">
             </div>
-            <button type="button" class="btn btn-primary" onclick="atualizaRede()"><i
+            <button type="button" class="btn btn-primary" onclick="EditRede()"><i
                 class="fa-solid fa-floppy-disk"></i> Editar</button>
 
             <button type="button" class="btn btn-danger" data-bs-dismiss="modal" aria-label="Close"><i
@@ -113,20 +115,10 @@
       const lv = await response.json()
       for (const rede of lv) {
         console.log(rede)
-        strHtml += `
-                  <tr>
-                    <td>${rede.id}</td>
-                      <td>${rede.name}</td>
-                      <td>${rede.ipEntrance}</td>
-                      <td>${rede.gateway}</td>
-                      <td>
-                          <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#upModal" onclick="EditRede(${rede.id})"><i class="fa fa-pencil"></i> Editar</button>
-                          <button type='button' class='btn btn-danger' onclick="apagaRede(${rede.id})"><i class="fa fa-trash"></i> Apagar</button>
-                      </td>
-                  </tr>
-                      `
+        addRedeToTable(rede)
+
       }
-      document.getElementById("cardRedes").innerHTML = strHtml;
+      document.getElementById("table-networks").innerHTML += strHtml;
     }
     listarRedes();
   </script>
@@ -139,6 +131,34 @@
       })
   </script>
   <script>
+    const addRedeToTable = (data) => {
+      const d = {
+        id: data.id,
+        name: data.name,
+        ipEntrance: data.ipEntrance,
+        gateway: data.gateway
+      }
+      const table = document.getElementById("table-networks");
+
+      table.innerHTML += `
+        <tr data-id="${d.id}">
+          <td>${d.id}</td>
+          <td>${d.name}</td>
+          <td>${d.ipEntrance}</td>
+          <td>${d.gateway}</td>
+          <td>
+            <button type="button" class="btn btn-success" data-id="${d.id}" data-bs-toggle="modal" data-bs-target="#upModal" onclick="updateModalId(this)"><i class="fa fa-pencil"></i> Editar</button>
+            <button type='button' data-id="${d.id}" class='btn btn-danger' onclick="apagaRede(this);"><i class="fa fa-trash"></i> Apagar</button>
+          </td>
+        </tr>
+      `;
+    }
+
+    const updateModalId = (event) => {
+      const id = event.getAttribute("data-id");
+      document.querySelector("input[name='muid']").value = id;
+    }
+
     const novaRede = async () => {
       var dados = {
         id: document.getElementById("mname").value,
@@ -150,7 +170,11 @@
         const response = await fetch('/api/network', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(dados)
+          body: JSON.stringify({
+            name: dados.id,
+            ipEntrance: dados.Network,
+            gateway: dados.Mask
+          }),
         });
 
         if (!response.ok) {
@@ -162,7 +186,8 @@
         const resposta = `A rede com ID: ${dados.id} foi adicionada com sucesso!`;
         alert(resposta);
 
-        listarRedes();
+
+        addRedeToTable(data);
       } catch (error) {
         console.error('Houve um erro:', error);
       }
@@ -170,8 +195,12 @@
 
   </script>
   <script>
-    const apagaRede = async (id) => {
-      fetch("/api/network/:id" + id, {
+    const apagaRede = async (event) => {
+      event.preventDefault();
+      const id = e.getAttribute("data-id");
+      // Delete this td
+      e.parentNode.parentNode.remove();
+      fetch("/api/network/" + id, {
         method: "DELETE",
         headers: { "Content-Type": "application/json" },
       })
@@ -185,7 +214,7 @@
         .then((data) => {
           // Faz algo com os dados
           //console.log(data);
-          resposta = "O carro foi apagado com sucesso!";
+          resposta = "A Rede foi apagado com sucesso!";
           alert(resposta);
           listarRede();
         })
@@ -197,49 +226,38 @@
 
   </script>
   <script>
-    const EditRede = async (id) => {
-      //alert("aaaa")
-      const response = await fetch('/api/network/:id' + id)
-      const rede = await response.json()
+    const EditRede = async (event) => {
+      const id = document.querySelector("input[name='muid']").value;
 
-      document.getElementById("muname").value = rede[0].name;
-      document.getElementById("muipEntrance").value = rede[0].ipEntrace;
-      document.getElementById("mugateway").value = rede[0].gateway;
+      const newName = document.getElementById("muname").value;
+      const newIpEntrance = document.getElementById("muipEntrance").value
+      const newGateway = document.getElementById("mugateway").value
+      //alert("aaaa")
+      const response = await fetch('/api/network/' + id, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        data: JSON.stringify({
+          name: newName,
+          ipEntrance: newIpEntrance,
+          gateway: newGateway
+        })
+    })
+      const rede = await response.json()
+      console.log(rede);
+
+      // Update the table
+      const table = document.getElementById("table-networks");
+
+      const tr = table.querySelector(`tr[data-id="${id}"]`);
+      tr.querySelector("td:nth-child(2)").innerText = newName;
+      tr.querySelector("td:nth-child(3)").innerText = newIpEntrance;
+      tr.querySelector("td:nth-child(4)").innerText = newGateway; 
+      
     }
 
   </script>
-  <script>
-    const atualizaRede = async () => {
-      var dados = {
-        Name: document.getElementById("muname").value,
-        Ip: document.getElementById("muipEntrance").value,
-        Gateway: document.getElementById("mugateway").value,
-      };
-      fetch("/api/network/:id", {
-        method: "PUT",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(dados),
-      })
-        .then((response) => {
-          // Verifica se a resposta foi bem sucedida
-          if (!response.ok) {
-            throw new Error("Erro ao obter os dados");
-          }
-          // Converte a resposta para JSON
-          return response.json();
-        })
-        .then((data) => {
-          // Faz algo com os dados
-          //console.log(data);
-          resposta = "O carro com a marca: " + dados.Marca + " foi atualizado com sucesso!";
-          alert(resposta);
-          listarCarros();
-        })
-        .catch((error) => {
-          // Captura qualquer erro de rede ou tratamento de erro
-          console.error("Houve um erro:", error);
-        });
-    };
+  
+
 
   </script>
   <script src="/static/scripts/bootstrap.bundle.min.js"></script>

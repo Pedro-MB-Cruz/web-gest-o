@@ -1,4 +1,4 @@
-import { prisma } from "@p/seed.prisma";
+import { prisma } from "../seed.prisma";
 
 export default async function createNetworkSeed() {
   if ((await prisma.network.count()) === 0) {

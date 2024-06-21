@@ -9,7 +9,6 @@ import {
 import technicianOnlyMiddleware from "@/middleware/technicianOnly.middleware";
 
 const router = Router();
-
 // Get a subNetworks by id
 router.get("/:id", getSubNetworkById);
 // Create a subNetwork (only for technicians or above)
